@@ -1,0 +1,92 @@
+body {
+	margin: 0;
+}
+
+nav a {
+	padding: 16px;
+	text-decoration: none;
+	display: inline-block;
+}
+
+#header__title {
+	font-size: 2em;
+	text-decoration: none;
+}
+
+#header__account-info {
+	float: right;
+	line-height: 2em;
+}
+
+#nav__bar {
+	background-color: #33b5e5;
+}
+
+.timeline__item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 10px 0;
+	min-height: 60px;
+	position: relative;
+
+}
+
+.timeline__checkline {
+	position:absolute;
+	height: 100%;
+	margin: 0 5px 0 10px;
+	width: 50px;
+	min-height: 60px;
+	display: flex;
+	flex-direction: column;
+}
+
+.timeline__check {
+	background-color: black;
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+}
+
+.timeline__line {
+	display: inline-block;
+	width: 5px;
+	flex-grow: 1;
+	background-color: grey;
+}
+
+.timeline__title {
+	font-size: 1.5em;
+	font-weight: 700;
+}
+
+.timeline__text {
+	margin-left: 65px
+}
+
+.timeline__info {
+	font-size: 1em;
+}
+
+.timeline__padding {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.timeline__padding--before {
+	height: 15px;
+}
+
+.timeline__padding--after {
+	flex-grow: 1;
+}
+
+#timeline__first .timeline__padding--before {
+	opacity: 0;
+}
+
+#timeline__last .timeline__padding--after {
+	opacity: 0;
+}
