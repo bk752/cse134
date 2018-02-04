@@ -1,24 +1,27 @@
-﻿TYPE,NAME,PRICE,IMAGE
-CPU,Intel Core i3,$85.95 ,i3.jpeg
-CPU,Intel Core i5,$197.89 ,i5.jpeg
-CPU,Intel Core i7,$569.00 ,i7.jpeg
-RAM,Crucial 8 GB DDR4 SDRAM,$90.99 ,ram1.jpeg
-RAM,Corsair 2x8 GB DDR4 DRAM,$204.99 ,ram2.jpeg
-MOTHERBOARD,GIGABYTE GA-B250M Micro ATX,$59.99 ,mb1.jpeg
-MOTHERBOARD,ASUS B350-F ATX,$109.99 ,mb2.jpeg
-MOTHERBOARD,MSI Gaming Z170A ATX,$439.89 ,mb3.jpeg
-CASE,Rosewill Micro ATX Tower,$24.99 ,case1.jpeg
-CASE,NZXT ATX Mid Tower,$69.99 ,case2.jpeg
-CASE,Corsair Crystal 570X ATX Mid Tower,$179.99 ,case3.jpeg
-STORAGE,WD Blue 1TB HDD,$49.99 ,storage1.jpeg
-STORAGE,Samsung 500GB SSD,$229.99 ,storage2.jpeg
-STORAGE,Samsung 1TB SSD,$429.99 ,storage3.jpeg
-POWERSUPPLY,Corsair CX650M 650W,$69.99 ,ps1.jpeg
-POWERSUPPLY,Seasonic SSR-850FX 850W,$119.99 ,ps2.jpeg
-POWERSUPPLY,Enermax EPF1050EWT 1050W,$249.99 ,ps3.jpeg
-ACCESSORY,HP 23.8-inch 1080p,$129.99 ,monitor1.jpeg
-ACCESSORY,ASUS 24-inch 1080p VG245H Gaming Monitor,$199.99 ,monitor2.jpeg
-ACCESSORY,Amazon Basics Wired Keyboard,$12.99 ,keyboard1.jpeg
-ACCESSORY,SteelSeries Apex Gaming Keyboard,$49.00 ,keyboard2.jpeg
-ACCESSORY,Amazon Basics Wired Mouse,$6.99 ,mouse1.jpeg
-ACCESSORY,Razer DeathAdder Gaming Mouse,$59.99 ,mouse2.jpeg
+TYPE	NAME	PRICE	IMAGE
+CPU	Intel Core i3	$85.95 	i3.jpeg
+CPU	Intel Core i5	$197.89 	i5.jpeg
+CPU	Intel Core i7	$569.00 	i7.jpeg
+RAM	Crucial 8 GB DDR4 SDRAM	$90.99 	ram1.jpeg
+RAM	Corsair 2x8 GB DDR4 DRAM	$204.99 	ram2.jpeg
+GPU	MSI NVIDIA GTX 1060	$489.89 	gpu1.jpeg
+GPU	MSI NVIDIA GTX 1080	$949.99 	gpu2.jpeg
+GPU	MSI Radeon RX 570	$636.99 	gpu3.jpeg
+MOTHERBOARD	GIGABYTE GA-B250M Micro ATX	$59.99 	mb1.jpeg
+MOTHERBOARD	ASUS B350-F ATX	$109.99 	mb2.jpeg
+MOTHERBOARD	MSI Gaming Z170A ATX	$439.89 	mb3.jpeg
+CASE	Rosewill Micro ATX Tower	$24.99 	case1.jpeg
+CASE	NZXT ATX Mid Tower	$69.99 	case2.jpeg
+CASE	Corsair Crystal 570X ATX Mid Tower	$179.99 	case3.jpeg
+STORAGE	WD Blue 1TB HDD	$49.99 	storage1.jpeg
+STORAGE	Samsung 500GB SSD	$229.99 	storage2.jpeg
+STORAGE	Samsung 1TB SSD	$429.99 	storage3.jpeg
+POWERSUPPLY	Corsair CX650M 650W	$69.99 	ps1.jpeg
+POWERSUPPLY	Seasonic SSR-850FX 850W	$119.99 	ps2.jpeg
+POWERSUPPLY	Enermax EPF1050EWT 1050W	$249.99 	ps3.jpeg
+ACCESSORY	HP 23.8-inch 1080p	$129.99 	monitor1.jpeg
+ACCESSORY	ASUS 24-inch 1080p VG245H Gaming Monitor	$199.99 	monitor2.jpeg
+ACCESSORY	Amazon Basics Wired Keyboard	$12.99 	keyboard1.jpeg
+ACCESSORY	SteelSeries Apex Gaming Keyboard	$49.00 	keyboard2.jpeg
+ACCESSORY	Amazon Basics Wired Mouse	$6.99 	mouse1.jpeg
+ACCESSORY	Razer DeathAdder Gaming Mouse	$59.99 	mouse2.jpeg
