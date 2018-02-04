@@ -386,7 +386,7 @@ form {
 		display: block;
 		text-align: center;
 		font-size: 1em;
-		padding: 32px;
+		padding: 24px;
 	}
 
 	.header__login, .header__signup {
