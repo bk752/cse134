@@ -48,8 +48,12 @@ nav a {
 	resize: none;
 }
 .recent_build_img{
-	width: 500px;
-	height: 500px;
+	max-height: 500px;
+}
+
+.table{
+	max-width: 1000px;
+	padding-bottom: 100px;
 }
 a.button {
     -webkit-appearance: button;
@@ -490,15 +494,7 @@ a.button {
 		padding: 24px;
 	}
 
-	
-
-	@media screen and (max-width: 500px) {
-		.recent_build_img{
-			width: 100%;
-		}
-	
-		.recent_build_text{
-			width: 100%;
-		}
+	.recent_build_img{
+		max-width: 100%;
 	}
 }
