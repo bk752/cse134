@@ -283,12 +283,19 @@ a.button {
 
 .price__table {
 	width: 100%;
-	border: 1px solid black;
 	border-collapse: collapse;
 }
 
 .price__table tfoot{
 	font-weight: 700;
+}
+
+.price__table thead th {
+	border-bottom: 1px solid black;
+}
+
+.price__table tfoot td {
+	border-top: 1px solid black;
 }
 
 .part-card {
@@ -336,7 +343,7 @@ a.button {
 }
 
 .part-select__description {
-	display: inline-block;
+	display: block;
 	text-align: left;
 	margin-left: 8px;
 	overflow: hidden;
