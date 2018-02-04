@@ -7,26 +7,24 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<header>
-			<div>
-				<a id=header__title href="home.html">
-					PCMaker.party
-				</a>
+		<header id="loginHeader" class="center">
+			<div class="innerCenter">
+				Log in to PCMaker.party!
 			</div>
 		</header>
-		<div class="login">
-			<form class="login__body" action="progress.html" method="post">
-				<div>
-					<label for="username">Username</label>
-					<input type="text" id="username">
-				</div>		
-				<div>
-					<label for="pass">Password</label>
-					<input type="text" id="pass">
-				</div>		
-				<input type="submit" value="Log In">
-				<a class="button" href="home.html">Cancel</a>
-			</form>
+		<div class="center">
+			<div class="innerCenter">
+				<form class="login__body" action="progress.html" method="post">
+					<label><b>Username</b></label>
+					<input class="loginInput" type="text" placeholder="Enter Username" name="uname" required>
+					<br>
+					<label><b>Password</b></label>
+					<input class="loginInput" type="password" placeholder="Enter Password" name="psw" required>
+					<br>
+					<input type="submit" value="Log In">
+					<a class="button" href="home.html">Cancel</a>
+				</form>
+			</div>
 		</div>
 	</body>
 </html>

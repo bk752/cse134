@@ -6,35 +6,31 @@
 		<meta name="author" content="Brian Kim">
 		<link rel="stylesheet" href="style.css">
 	</head>
-	<body>
-		<header>
-			<div>
-				<a id=header__title href="home.html">
-					PCMaker.party
-				</a>
+	<body class="loginBody">
+		<header id="loginHeader"class="center">
+			<div class="innerCenter">
+				Log in to PCMaker.party!
 			</div>
 		</header>
-		<div class="login">
-			<form class="signup__body" action="progress.html" method="post">
-				<div>
-					<label for="username">Username</label>
-					<input type="text" id="username">
-				</div>
-				<div>
-					<label for="email">E-mail</label>
-					<input type="text" id="email">
-				</div>			
-				<div>
-					<label for="pass">Password</label>
-					<input type="text" id="pass">
-				</div>		
-				<div>
-					<label for="confirmPass">Confirm Password</label>
-					<input type="text" id="confirmPass">
-				</div>
-				<input type="submit" value="Register">
-				<a class="button" href="home.html">Cancel</a>
-			</form>
+		<div class="center">
+			<div class="innerCenter">
+				<form class="login__body" action="progress.html" method="post">
+					<label><b>Username</b></label>
+					<input class="loginInput" type="text" placeholder="Enter Username" name="uname" required>
+					<br>
+					<label><b>Email</b></label>
+					<input class="loginInput" type="text" placeholder="Enter Email" name="email" required>
+					<br>
+					<label><b>Password</b></label>
+					<input class="loginInput" type="password" placeholder="Enter Password" name="psw" required>
+					<br>
+					<label><b>Confirm Password</b></label>
+					<input class="loginInput" type="password" placeholder="Confirm Password" name="confirmpsw" required>
+					<br>
+					<input type="submit" value="Log In">
+					<a class="button" href="home.html">Cancel</a>
+				</form>
+			</div>
 		</div>
 	</body>
 </html>
