@@ -4,10 +4,19 @@ body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+a {
+	color: #222;
+}
+
 nav a {
 	padding: 16px;
 	text-decoration: none;
 	display: inline-block;
+	transition: background-color 0.25s;
+}
+
+nav a:hover {
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 #header__title {
@@ -21,7 +30,7 @@ nav a {
 }
 
 #nav__bar {
-	background-color: #33b5e5;
+	background-color: #39e;
 }
 
 #logouthome{
@@ -93,7 +102,7 @@ a.button {
 	position:absolute;
 	height: 100%;
 	margin: 0 5px 0 10px;
-	width: 50px;
+	width: 64px;
 	min-height: 60px;
 	display: flex;
 	flex-direction: column;
@@ -101,9 +110,15 @@ a.button {
 
 .timeline__check {
 	background-color: black;
-	width: 50px;
-	height: 50px;
+	width: 64px;
+	height: 64px;
+	box-sizing: border-box;
+	padding: 4px;
 	display: inline-block;
+}
+
+.timeline__check--done {
+	background-color: green;
 }
 
 .timeline__line {
@@ -119,7 +134,7 @@ a.button {
 }
 
 .timeline__text {
-	margin-left: 65px
+	margin: 8px 0 8px 80px;
 }
 
 .timeline__info {
@@ -148,6 +163,12 @@ a.button {
 	opacity: 0;
 }
 
+.timeline__part-icon {
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	object-fit: contain;
+}
 #chatbox {
 	position: absolute;
 	left: 0;
@@ -163,7 +184,7 @@ a.button {
 	width: 200px;
 	bottom: 0;
 	top: 0;
-	background-color: grey;
+	background-color: #ccc;
 }
 
 #chat__messaging {
@@ -177,8 +198,8 @@ a.button {
 }
 
 #chat__log {
+	background-color: #eee;
 	padding-top: 10px;
-	background-color: orange;
 	width: 100%;
 	flex: 1 1 auto;
 	overflow: auto;
@@ -190,7 +211,7 @@ a.button {
 	flex: 0 0 auto;
 	display: flex;
 	flex-direction: row;
-	background-color: green;
+	background-color: #39e;
 }
 
 #chat__textbox {
@@ -213,10 +234,11 @@ a.button {
 }
 
 .chat__message {
-	background-color: pink;
+	background-color: #888;
 	display: inline-block;
 	max-width: 50%;
-	padding: 5px;
+	padding: 8px;
+	border-radius: 8px 8px 8px 0;
 }
 
 .chat__message-holder--user {
@@ -224,19 +246,31 @@ a.button {
 }
 
 .chat__message-holder--user .chat__message {
-	background-color: cyan;
+	background-color: #39e;
+	border-radius: 8px 8px 0 8px;
+}
+
+.price__table {
+	width: 100%;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.price__table tfoot{
+	font-weight: 700;
 }
 
 .part-card__main {
 	margin: 5px;
 	padding: 5px;
-	background-color: red;
+	background-color: #ddd;
 	overflow: hidden;
 }
 
 .part-card__image {
-	height: 50px;
-	width: 50px;
+	object-fit: contain;
+	height: 64px;
+	width: 64px;
 	margin-right: 5px;
 	float: left;
 	background-color: black;
@@ -252,6 +286,34 @@ a.button {
 
 .part-card__add {
 	padding: 5px;
+}
+
+.part-select__option {
+	margin: 4px;
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	border-left-style: solid;
+	border-left-color: grey;
+	border-left-width: 8px;
+}
+
+form {
+	margin: 0;
+}
+
+
+.part-select__radio {
+	display: none;
+}
+
+.part-select__radio:checked+.part-select__option {
+	border-color: green;
+}
+
+.part-select__icon {
+	width: 48px;
+	height: auto;
 }
 
 @media screen and (max-width: 1000px) {
@@ -281,7 +343,7 @@ a.button {
 		display: block;
 		text-align: center;
 		font-size: 1em;
-		padding: 48px;
+		padding: 32px;
 	}
 
 	.header__login, .header__signup {
@@ -299,7 +361,8 @@ a.button {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		padding: 10px 0;
+		padding: 0;
+		border-bottom: 2px solid grey;
 		min-height: 60px;
 		position: relative;
 
@@ -308,7 +371,7 @@ a.button {
 	.timeline__checkline {
 		position:absolute;
 		height: 100%;
-		margin: 0 5px 0 0;
+		margin: 0 4px 0 0;
 		width: 24px;
 		min-height: 0;
 		display: flex;
@@ -316,11 +379,9 @@ a.button {
 	}
 
 	.timeline__check {
-		background-color: black;
-		width: 25px;
+		width: 8px;
 		display: inline-block;
 		flex: 1 1 auto;
-		margin-bottom: 8px;
 	}
 
 	.timeline__line {
@@ -333,16 +394,17 @@ a.button {
 	.timeline__title {
 		font-size: 1em;
 		font-weight: 700;
-		margin: 20px 0;
+		margin: 12px 0;
 	}
 
 	.timeline__text {
-		margin-left: 65px;
 		font-size: 1em;
+		margin-left: 32px;
 	}
 
 	.timeline__info {
 		font-size: 0.8em;
+		margin: 12px 0;
 	}
 
 	.timeline__padding {
@@ -365,6 +427,10 @@ a.button {
 		opacity: 0;
 	}
 
+	.timeline__part-icon {
+		display: none;
+	}
+
 	#chatbox {
 		position: absolute;
 		left: 0;
@@ -372,15 +438,6 @@ a.button {
 		bottom: 0;
 		top: 82px;
 		background-color: yellow;
-	}
-
-	#chat__price {
-		position: absolute;
-		left: 0;
-		width: 200px;
-		bottom: 0;
-		top: 0;
-		background-color: grey;
 	}
 
 	#chat__messaging {
@@ -395,7 +452,6 @@ a.button {
 
 	#chat__log {
 		padding-top: 10px;
-		background-color: orange;
 		width: 100%;
 		flex: 1 1 auto;
 		overflow: auto;
@@ -407,7 +463,6 @@ a.button {
 		flex: 0 0 auto;
 		display: flex;
 		flex-direction: row;
-		background-color: green;
 	}
 
 	button {
@@ -436,10 +491,10 @@ a.button {
 	}
 
 	.chat__message {
-		background-color: pink;
 		display: inline-block;
 		max-width: 80%;
 		padding: 24px;
+		border-radius: 16px 16px 16px 0;
 	}
 
 	.chat__message-holder--user {
@@ -447,19 +502,18 @@ a.button {
 	}
 
 	.chat__message-holder--user .chat__message {
-		background-color: cyan;
+		border-radius: 16px 16px 0 16px;
 	}
 
 	.part-card__main {
 		margin: 8px;
 		padding: 24px;
-		background-color: red;
 		overflow: hidden;
 	}
 
 	.part-card__image {
-		height: 50px;
-		width: 50px;
+		height: 64px;
+		width: 64px;
 		margin-right: 5px;
 		float: left;
 		background-color: black;
