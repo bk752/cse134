@@ -46,6 +46,7 @@ nav a:hover {
 #logouthome{
 	display:none;
 }
+
 .pagetitle{
 	font-size: 24px;
 	font-weight: bold;
@@ -59,15 +60,13 @@ nav a:hover {
 }
 
 .recent_build{
-	padding-bottom: 200px;
+	border-style: solid;
+	padding: 10px;
+	margin: 10px;
 }
-.recent_build_text{
-	width: 500px;
-	height: 500px;
-	resize: none;
-}
+
 .recent_build_img{
-	max-height: 500px;
+	max-width: 100%;
 }
 
 .table{
@@ -75,10 +74,6 @@ nav a:hover {
 	padding-bottom: 100px;
 }
 a.button {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-
     text-decoration: none;
 	color: initial;
 	padding: 3px;
@@ -102,19 +97,9 @@ a.button {
 #loginHeader{
 	font-size: 24px;
 }
+
 .loginBody{
 	margin: 0 auto;
-}
-.loginOld {
-	width: 50%;
-
-	padding: 20px;
-  
-	position: absolute;
-	top: 50%;
-	left: 50%;
-  
-	margin: -70px 0 0 -170px;
 }
 
 .timeline-item {
@@ -598,9 +583,5 @@ form {
 
 	.part-card__add {
 		padding: 24px;
-	}
-
-	.recent_build_img{
-		max-width: 100%;
 	}
 }
