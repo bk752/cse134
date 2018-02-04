@@ -1,3 +1,7 @@
+html {
+	overflow-x: hidden;
+	width: 100%;
+}
 body {
 	font-size: 1em;
 	margin: 0;
@@ -36,6 +40,7 @@ nav a:hover {
 
 #navbar {
 	background-color: #39e;
+	box-shadow: 0 0 10px black;
 }
 
 #logouthome{
@@ -82,10 +87,11 @@ a.button {
 	width: 125px;
 }
 .center {
-    margin: auto;
+    margin: 16px auto auto auto;
     width: 640px;
 	padding: 16px;
 	background-color: #fff;
+	box-shadow: 0 0 10px black;
 }
 
 .innerCenter{
@@ -193,6 +199,7 @@ a.button {
 	object-fit: contain;
 }
 #chatbox {
+	z-index: -1;
 	position: absolute;
 	left: 0;
 	right: 0;
@@ -206,6 +213,7 @@ a.button {
 	width: 200px;
 	bottom: 0;
 	top: 0;
+	padding-top: 24px;
 	background-color: #ccc;
 }
 
@@ -261,6 +269,7 @@ a.button {
 	max-width: 50%;
 	padding: 8px;
 	border-radius: 8px 8px 8px 0;
+	box-shadow: 0 3px 10px grey;
 }
 
 .chat__message-holder--user {
@@ -360,8 +369,9 @@ form {
 
 .part-select__icon {
 	width: 48px;
+	height: 48px;
+	object-fit: contain;
 	margin-right: 8px;
-	height: auto;
 }
 
 @media screen and (max-width: 640px) {
@@ -400,8 +410,10 @@ form {
 	}
 
 	.center {
+		margin-top: 0;
 		width: auto;
 		padding: 0;
+		box-shadow: none;
 	}
 
 	.header__login, .header__signup {
