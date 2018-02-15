@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
+		<script type="text/javascript" src="progress.js"></script>
 		<header>
 			<div>
 				<a class=header__title href="home.html">
@@ -42,177 +43,179 @@
 			<div class="pagetitle">
 				Progress
 			</div>
-			<div class="timeline-item--first timeline-item">
-				<div class="timeline-item__checkline">
-					<div class="timeline-item__padding--before timeline-item__padding">
-						<span class="timeline-item__line">
+			<div id="timeline-holder" >
+				<div class="timeline-item--first timeline-item">
+					<div class="timeline-item__checkline">
+						<div class="timeline-item__padding--before timeline-item__padding">
+							<span class="timeline-item__line">
+							</span>
+						</div>
+						<span class="timeline-item__check timeline-item__check--done">
 						</span>
+						<div class="timeline-item__padding--after timeline-item__padding">
+							<span class="timeline-item__line">
+							</span>
+						</div>
 					</div>
-					<span class="timeline-item__check timeline-item__check--done">
-					</span>
-					<div class="timeline-item__padding--after timeline-item__padding">
-						<span class="timeline-item__line">
-						</span>
+					<div class="timeline-item__text">
+						<div class="timeline-item__title">
+							Description
+						</div>
+						<div class="timeline-item__info">
+							Completed 2018-01-29 at 5:13:55 PM
+						</div>
 					</div>
 				</div>
-				<div class="timeline-item__text">
-					<div class="timeline-item__title">
-						Description
+				<div class="timeline-item">
+					<div class="timeline-item__checkline">
+						<div class="timeline-item__padding--before timeline-item__padding">
+							<span class="timeline-item__line">
+							</span>
+						</div>
+						<span class="timeline-item__check timeline-item__check--done">
+						</span>
+						<div class="timeline-item__padding--after timeline-item__padding">
+							<span class="timeline-item__line">
+							</span>
+						</div>
 					</div>
-					<div class="timeline-item__info">
-						Completed 2018-01-29 at 5:13:55 PM
+					<div class="timeline-item__text">
+						<div class="timeline-item__title">
+							Pick Parts
+						</div>
+						<div class="timeline-item__info">
+							Completed 2018-01-29 at 5:13:55 PM
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="timeline-item">
-				<div class="timeline-item__checkline">
-					<div class="timeline-item__padding--before timeline-item__padding">
-						<span class="timeline-item__line">
+				<div class="timeline-item">
+					<div class="timeline-item__checkline">
+						<div class="timeline-item__padding--before timeline-item__padding">
+							<span class="timeline-item__line">
+							</span>
+						</div>
+						<span class="timeline-item__check timeline-item__check--done">
 						</span>
+						<div class="timeline-item__padding--after timeline-item__padding">
+							<span class="timeline-item__line">
+							</span>
+						</div>
 					</div>
-					<span class="timeline-item__check timeline-item__check--done">
-					</span>
-					<div class="timeline-item__padding--after timeline-item__padding">
-						<span class="timeline-item__line">
-						</span>
+					<div class="timeline-item__text">
+						<div class="timeline-item__title">
+							Order Parts
+						</div>
+						<div class="timeline-item__info">
+							Completed 2018-01-29 at 5:13:55 PM
+						</div>
 					</div>
 				</div>
-				<div class="timeline-item__text">
-					<div class="timeline-item__title">
-						Pick Parts
+				<div class="timeline-item timeline-item--active">
+					<div class="timeline-item__checkline">
+						<div class="timeline-item__padding--before timeline-item__padding">
+							<span class="timeline-item__line">
+							</span>
+						</div>
+						<span class="timeline-item__check">
+						</span>
+						<div class="timeline-item__padding--after timeline-item__padding">
+							<span class="timeline-item__line">
+							</span>
+						</div>
 					</div>
-					<div class="timeline-item__info">
-						Completed 2018-01-29 at 5:13:55 PM
+					<div class="timeline-item__text">
+						<div class="timeline-item__title">
+							Expert Builds Computer
+						</div>
+						<div class="timeline-item__info">
+							
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="timeline-item">
-				<div class="timeline-item__checkline">
-					<div class="timeline-item__padding--before timeline-item__padding">
-						<span class="timeline-item__line">
+				<div class="timeline-item">
+					<div class="timeline-item__checkline">
+						<div class="timeline-item__padding--before timeline-item__padding">
+							<span class="timeline-item__line">
+							</span>
+						</div>
+						<span class="timeline-item__check">
 						</span>
+						<div class="timeline-item__padding--after timeline-item__padding">
+							<span class="timeline-item__line">
+							</span>
+						</div>
 					</div>
-					<span class="timeline-item__check timeline-item__check--done">
-					</span>
-					<div class="timeline-item__padding--after timeline-item__padding">
-						<span class="timeline-item__line">
-						</span>
+					<div class="timeline-item__text">
+						<div class="timeline-item__title">
+							Shipping Computer
+						</div>
+						<div class="timeline-item__info">
+						</div>
 					</div>
 				</div>
-				<div class="timeline-item__text">
-					<div class="timeline-item__title">
-						Order Parts
+				<div class="timeline-item">
+					<div class="timeline-item__checkline">
+						<div class="timeline-item__padding--before timeline-item__padding">
+							<span class="timeline-item__line">
+							</span>
+						</div>
+						<span class="timeline-item__check">
+						</span>
+						<div class="timeline-item__padding--after timeline-item__padding">
+							<span class="timeline-item__line">
+							</span>
+						</div>
 					</div>
-					<div class="timeline-item__info">
-						Completed 2018-01-29 at 5:13:55 PM
+					<div class="timeline-item__text">
+						<div class="timeline-item__title">
+							Set Up Computer
+						</div>
+						<div class="timeline-item__info">
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="timeline-item timeline-item--active">
-				<div class="timeline-item__checkline">
-					<div class="timeline-item__padding--before timeline-item__padding">
-						<span class="timeline-item__line">
+				<div class="timeline-item">
+					<div class="timeline-item__checkline">
+						<div class="timeline-item__padding--before timeline-item__padding">
+							<span class="timeline-item__line">
+							</span>
+						</div>
+						<span class="timeline-item__check">
 						</span>
+						<div class="timeline-item__padding--after timeline-item__padding">
+							<span class="timeline-item__line">
+							</span>
+						</div>
 					</div>
-					<span class="timeline-item__check">
-					</span>
-					<div class="timeline-item__padding--after timeline-item__padding">
-						<span class="timeline-item__line">
-						</span>
+					<div class="timeline-item__text">
+						<div class="timeline-item__title">
+							Description
+						</div>
+						<div class="timeline-item__info">
+							Completed 2018-01-29 at 5:13:55 PM
+						</div>
 					</div>
 				</div>
-				<div class="timeline-item__text">
-					<div class="timeline-item__title">
-						Expert Builds Computer
-					</div>
-					<div class="timeline-item__info">
-						
-					</div>
-				</div>
-			</div>
-			<div class="timeline-item">
-				<div class="timeline-item__checkline">
-					<div class="timeline-item__padding--before timeline-item__padding">
-						<span class="timeline-item__line">
+				<div class="timeline-item--last timeline-item">
+					<div class="timeline-item__checkline">
+						<div class="timeline-item__padding--before timeline-item__padding">
+							<span class="timeline-item__line">
+							</span>
+						</div>
+						<span class="timeline-item__check">
 						</span>
+						<div class="timeline-item__padding--after timeline-item__padding">
+							<span class="timeline-item__line">
+							</span>
+						</div>
 					</div>
-					<span class="timeline-item__check">
-					</span>
-					<div class="timeline-item__padding--after timeline-item__padding">
-						<span class="timeline-item__line">
-						</span>
-					</div>
-				</div>
-				<div class="timeline-item__text">
-					<div class="timeline-item__title">
-						Shipping Computer
-					</div>
-					<div class="timeline-item__info">
-					</div>
-				</div>
-			</div>
-			<div class="timeline-item">
-				<div class="timeline-item__checkline">
-					<div class="timeline-item__padding--before timeline-item__padding">
-						<span class="timeline-item__line">
-						</span>
-					</div>
-					<span class="timeline-item__check">
-					</span>
-					<div class="timeline-item__padding--after timeline-item__padding">
-						<span class="timeline-item__line">
-						</span>
-					</div>
-				</div>
-				<div class="timeline-item__text">
-					<div class="timeline-item__title">
-						Set Up Computer
-					</div>
-					<div class="timeline-item__info">
-					</div>
-				</div>
-			</div>
-			<div class="timeline-item">
-				<div class="timeline-item__checkline">
-					<div class="timeline-item__padding--before timeline-item__padding">
-						<span class="timeline-item__line">
-						</span>
-					</div>
-					<span class="timeline-item__check">
-					</span>
-					<div class="timeline-item__padding--after timeline-item__padding">
-						<span class="timeline-item__line">
-						</span>
-					</div>
-				</div>
-				<div class="timeline-item__text">
-					<div class="timeline-item__title">
-						Description
-					</div>
-					<div class="timeline-item__info">
-						Completed 2018-01-29 at 5:13:55 PM
-					</div>
-				</div>
-			</div>
-			<div class="timeline-item--last timeline-item">
-				<div class="timeline-item__checkline">
-					<div class="timeline-item__padding--before timeline-item__padding">
-						<span class="timeline-item__line">
-						</span>
-					</div>
-					<span class="timeline-item__check">
-					</span>
-					<div class="timeline-item__padding--after timeline-item__padding">
-						<span class="timeline-item__line">
-						</span>
-					</div>
-				</div>
-				<div class="timeline-item__text">
-					<div class="timeline-item__title">
-						Description
-					</div>
-					<div class="timeline-item__info">
-						Completed 2018-01-29 at 5:13:55 PM
+					<div class="timeline-item__text">
+						<div class="timeline-item__title">
+							Description
+						</div>
+						<div class="timeline-item__info">
+							Completed 2018-01-29 at 5:13:55 PM
+						</div>
 					</div>
 				</div>
 			</div>
