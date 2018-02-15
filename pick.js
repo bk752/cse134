@@ -21,7 +21,7 @@ function categoryToHTML(category, expand) {
 						<span class="timeline-item__line">
 						</span>
 					</div>
-					<span class="timeline-item__check ${category.picked ? "timeline-item__check--done" : ""}">
+					<span class="timeline-item__check ${category.completed ? "timeline-item__check--done" : ""}">
 					</span>
 					<div class="timeline-item__padding--after timeline-item__padding">
 						<span class="timeline-item__line">
@@ -94,6 +94,7 @@ function removeItem() {
 
 function finishPart() {
 	if (active < parts.length) {
+		parts[active].completed = true;
 		active++;
 		updateDOM();
 	}
@@ -102,6 +103,7 @@ function finishPart() {
 function previousPart() {
 	if (active > 0) {
 		active--;
+		parts[active].completed = false;
 		updateDOM();
 	}
 }
