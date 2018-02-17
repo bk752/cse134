@@ -39,16 +39,19 @@
 			</div>
         </nav>
 		<div class="center">
-            <div class="pagetitle">
-                Description of Build
+            <div id="descriptionTitle" class="pagetitle">
+                Add a Description
             </div>
-			<div class="description">
-                <textarea class="description_box" readonly>I am looking to build a computer that I can use for playing video games with the maximum graphics settings. I want it to have a high end graphics card, a nice monitor monitor, and a lot of RAM. My budget is around $1,500.</textarea>
-                <br>
+			<div id="descriptionEdit">
+				<textarea id="descEditText" class="description_box" placeholder="Add a description of the type of computer you want to build" rows="3" cols="50"></textarea>
+				<button type="button" onclick="submitOnClick()">Submit</button>
 			</div>
-			<form action="descriptionempty.html">
-				<input type="submit" value="Edit Description" />
-			</form>
+		
+			<div id="descriptionFill" style="display:none;">
+                <textarea id="descFillText" class="description_box" readonly>I am looking to build a computer that I can use for playing video games with the maximum graphics settings. I want it to have a high end graphics card, a nice monitor monitor, and a lot of RAM. My budget is around $1,500.</textarea>
+                <button type="button" onclick="editOnClick()">Edit Description</button>
+			</div>
 		</div>
+		<script type="text/javascript" src="description.js"></script>
 	</body>
 </html>
