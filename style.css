@@ -235,7 +235,6 @@ a.button {
 }
 
 .chat__textbox {
-	height: 100%;
 	flex: 1 1 auto;
 	text-align: left;
 	resize: none;
@@ -540,7 +539,6 @@ form {
 	}
 
 	.chat__textbox {
-		height: auto;
 		font-size: 1em;
 		flex: 1 1 auto;
 	}
