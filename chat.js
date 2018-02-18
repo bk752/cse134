@@ -71,11 +71,6 @@ messages.forEach((message, index)=> {
     addMessage(message);
 })
 
-function closeParts() {
-    let partsMessageHolder = document.getElementById("partsMessageHolder");
-    chatLog.removeChild(partsMessageHolder);
-}
-
 function sendOnClick() {
     sendMessage();
 }
@@ -123,14 +118,22 @@ function displayParts(cat_name) {
                 info.setAttribute("class", "part-card__description");
                 info.innerHTML = part.desc;
 
+				let button = document.createElement("button");
+				button.setAttribute("class", "part-card__add");
+				button.innerHTML = "Add part";
+
                 partEle.appendChild(imageEle);
                 partEle.appendChild(title);
                 partEle.appendChild(info);
+				partEle.appendChild(button);
                 msg.appendChild(partEle);
             }
             let button = document.createElement("button");
             button.setAttribute("class", "part-card__add");
-            button.setAttribute("onclick", "closeParts()");
+            button.onclick = () => {
+				chatLog.removeChild(holder);
+			};
+
             button.innerHTML = "Close";
             msg.appendChild(button);
         }
