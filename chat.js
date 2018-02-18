@@ -151,12 +151,12 @@ function keyPress(e) {
 
     // If the user has pressed enter
     if (key === 13) {
-        if (e.ctrlKey) {
+        if (e.shiftKey) {
             partsOnClick();
         }
-        else {sendMessage();
-            e.preventDefault();
+        else {
+            sendMessage();
         }
-        
+        e.preventDefault();
     }
 }
