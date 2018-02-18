@@ -1,4 +1,4 @@
-function dateToHTML(step, expand) {
+function dateToHTML(step, offset) {
 	return `
 					<div class="timeline-item__checkline">
 						<div class="timeline-item__padding--before timeline-item__padding">
@@ -17,8 +17,9 @@ function dateToHTML(step, expand) {
 							${step.name}
 						</div>
 						<div class="timeline-item__info">
-							${expand ? "<button onclick=completeStep()>Done</button><button onclick=undoStep()>Undo</button>" : ""}
 							${step.date ? `Completed ${step.date.toDateString()}` : ""}
+							${(offset === 0) ? "<button onclick=completeStep()>Done</button>" : ""}
+							${(offset === -1) ? "<button onclick=undoStep()>Undo</button>" : ""}
 						</div>
 					</div>
 	`;
@@ -79,7 +80,7 @@ function updateDOM() {
 			(index === active ? " timeline-item--active" : "") + 
 			(index === 0 ? " timeline-item--first" : "") + 
 			(index === steps.length-1 ? " timeline-item--last" : "");
-		root.innerHTML = dateToHTML(step, index === active);
+		root.innerHTML = dateToHTML(step, index - active);
 		sections.appendChild(root);
 	});
 }
