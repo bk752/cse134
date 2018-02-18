@@ -43,11 +43,12 @@ function sendMessage() {
 
 }
 
-function keyPress() {
-    var key = window.event.keyCode;
+function keyPress(e) {
+    var key = e.keyCode;
 
     // If the user has pressed enter
     if (key === 13) {
         sendMessage();
+		e.preventDefault();
     }
 }
