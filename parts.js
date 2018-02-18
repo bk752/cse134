@@ -15,7 +15,6 @@ function reduceParts(accumulator, part, prefix, index) {
 }
 
 function categoryToHTML(category, expand) {
-	console.log(category.picked);
 	return `
 					<div class="timeline-item__checkline">
 						<div class="timeline-item__padding--before timeline-item__padding">
@@ -55,7 +54,6 @@ function selectItem() {
 		form = form[0];
 		for (let i = 0; form[i]; i++) {
 			if (form[i].checked) {
-				console.log(i)
 				parts[active].select(i);
 				if (active < parts.length - 1) {
 					active++;
