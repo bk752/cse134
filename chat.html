@@ -67,41 +67,19 @@
 			</div>
 			<div class="chat__messaging">
 				<div id="chatLog" class="chat__log">
-					<div class="chat__message-holder chat__message-holder--user">
-						<div class="chat__message">
-							Test?!?! lets see if htis is all right
-							Test?!?! lets see if htis is all right
-							Test?!?! lets see if htis is all right
-							Test?!?! lets see if htis is all right
-						</div>
-					</div>
-					<div class="chat__message-holder">
-						<div class="chat__message">
-							Yo here is some stuff blah blah blah
-							<div class="part-card">
-								<img class="part-card__image" src="images/mb1.jpeg" alt="mb"/>
-								<div class="part-card__title">
-									Name
-								</div>
-
-								<div class="part-card__description">
-									info thing
-								</div>
-								<button class="part-card__add">
-									Add item
-								</button>
-							</div>
-						</div>
-					</div>
 				</div>
 				<div class="chat__input">
-					<textarea id="chatTextbox" onkeypress="keyPress(event)" class="chat__textbox" placeholder="Message..." rows="3" cols="50"></textarea>
+					<textarea id="chatTextbox" onkeydown="keyPress(event)" class="chat__textbox" placeholder="Message or Parts..." rows="3" cols="50"></textarea>
 					<button class="chat__send" onclick="sendOnClick()">
 						send
+					</button>
+					<button class="chat__send" onclick="partsOnClick()">
+						Parts
 					</button>
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript" src="partData.js"></script>
 		<script type="text/javascript" src="chat.js"></script>
 	</body>
 </html>
