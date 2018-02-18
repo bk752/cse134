@@ -87,8 +87,6 @@ function sendMessage() {
 
 }
 function displayParts(cat_name) {
-    
-
     for (j = 0; j < parts.length; j++) {
         let cat = parts[j];
         if (cat.name.toLowerCase() === cat_name) {

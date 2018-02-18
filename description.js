@@ -1,18 +1,18 @@
-let editBox = document.getElementById('descriptionEdit');
-let submitBox = document.getElementById('descriptionFill');
-let editText = document.getElementById('descEditText');
-let fillText = document.getElementById('descFillText');
-let descTitle = document.getElementById('descriptionTitle');
+let text = document.getElementById('text');
+let title = document.getElementById('descriptionTitle');
+let description = document.getElementById("description");
+let button = document.getElementById("button");
+
 function submitOnClick() {
-    editBox.style.display = "none";
-    submitBox.style.display = "inline";
-    fillText.innerHTML = editText.value;
-    descTitle.innerHTML = "Description of Build"
+    button.setAttribute("onclick", "editOnClick()");
+    button.innerHTML = "Edit Description";
+    text.readOnly = true;
+    title.innerHTML = "Description of Build";
 }
 
-
 function editOnClick() {
-    editBox.style.display = "inline";
-    submitBox.style.display = "none";
-    descTitle.innerHTML = "Edit Your Description";
+    button.setAttribute("onclick", "submitOnClick()");
+    button.innerHTML = "Submit";
+    text.readOnly = false;
+    title.innerHTML = "Edit Your Description";
 }
