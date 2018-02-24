@@ -34,7 +34,7 @@ function undoStep() {
 }
 
 function completeStep() {
-	if (active + 1 < steps.length) {
+	if (active + 1 <= steps.length) {
 		steps[active].complete(new Date());
 		active++;
 		updateDOM();
