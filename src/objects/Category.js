@@ -2,17 +2,30 @@ import Part from './Part';
 
 class Category {
 	constructor(name, list) {
-		this.name = name;
-		if (Array.isArray(list)) {
-			this.parts = list;
+		if (name instanceof Category) {
+			this.name = name.name;
+			this.parts = name.parts;
+			this.complete = name.complete;
+			this.picked = name.picked;
 		} else {
-			this.parts = [];
+			this.name = name;
+			if (Array.isArray(list)) {
+				this.parts = list;
+			} else {
+				this.parts = [];
+			}
+			this.complete = false;
+			this.picked = false;
 		}
-		this.complete = false;
+	}
+
+	completeSelect() {
+		this.complete = true;
+		return this;
 	}
 
 	select(index) {
-		this.picked = this.parts[index]
+		this.picked = this.parts[index];
 		return this;
 	}
 

@@ -1,8 +1,8 @@
 function reduceParts(accumulator, part, prefix, index) {
 	let choiceName = `${prefix}__${part.name}`
 	return accumulator + `
-								<input class="part-select__radio" type="radio" id="${choiceName}" name="a" value="${index}"> 
-								<label class="part-select__option" for="${choiceName}">
+								<label class="part-select__option">
+									<input class="part-select__radio" type="radio" name="a" value="${index}"> 
 									<span class="part-select__title">
 										<img class="part-select__icon" src="${part.image}" alt="mb1"/>${part.name}
 									</span>

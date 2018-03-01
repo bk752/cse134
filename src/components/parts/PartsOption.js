@@ -5,7 +5,7 @@ function PartsOption(props) {
 	let part = props.part;
 	console.log(part.image);
 	return (
-		<label onClick={props.selectOption} className={`part-select__option ${props.selected ? "part-select__option--selected" : ""}`}>
+		<label onClick={props.selectPart} className={`part-select__option ${props.selected ? "part-select__option--selected" : ""}`}>
 			<span className="part-select__title">
 				<img className="part-select__icon" src={part.image} alt="mb1"/>{part.name}
 			</span>
@@ -19,7 +19,7 @@ function PartsOption(props) {
 PartsOption.propTypes = {
 	part: PropTypes.instanceOf(Part),
 	selected: PropTypes.bool,
-	selectOption: PropTypes.func
+	selectPart: PropTypes.func
 };
 
 export default PartsOption;

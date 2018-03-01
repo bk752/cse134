@@ -40,11 +40,15 @@ class PartsCategory extends React.Component {
 					<form className="part-select">
 						<div>
 							{category.parts.map((val, ind) => (
-								<PartsOption part={val} selected={this.selected} selectOption={this.selectOption} key={val.name}>
+								<PartsOption 
+									part={val}
+									selected={this.selected}
+									selectPart={() => this.props.selectPart(ind)}
+									key={val.name}>
 								</PartsOption>
 							))}
 						</div>
-						<button type="button" onClick={this.props.selectItem}>Done</button>
+						<button type="button" onClick={this.props.completeCategory}>Done</button>
 					</form>
 			 : false}
 				</div>
@@ -54,8 +58,12 @@ class PartsCategory extends React.Component {
 }
 PartsCategory.propTypes = {
 	category: PropTypes.instanceOf(Category),
-	selectItem: PropTypes.func,
-	expand: PropTypes.bool
+	selectPart: PropTypes.func,
+	completeCategory: PropTypes.func,
+	expand: PropTypes.bool,
+	first: PropTypes.bool,
+	last: PropTypes.bool,
+	active: PropTypes.bool
 };
 
 export default PartsCategory;
