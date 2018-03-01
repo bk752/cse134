@@ -36,7 +36,14 @@ function categoryToHTML(category, expand) {
 					</div>
 					${expand ? `
 						<form>
-							${category.parts.reduce((acc, val, ind) => reduceParts(acc, val, category.name, ind), "")}
+							{category.parts.map((val, ind) => (
+								<PartsOption 
+									part={val}
+									selected={this.selected}
+									selectPart={() => this.props.selectPart(ind)}
+									key={val.name}>
+								</PartsOption>
+							))}
 						</form>
 						<form class="part-add">
 							<div>

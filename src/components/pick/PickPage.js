@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as partsActions from '../../actions/partsActions';
+import * as pickActions from '../../actions/pickActions';
 import PartsCategory from './PartsCategory';
 import CenterPage from '../common/CenterPage';
 import {browserHistory} from 'react-router';
@@ -9,7 +9,7 @@ import {browserHistory} from 'react-router';
 import Category from '../../objects/Category';
 import Part from '../../objects/Part';
 
-class PartsPage extends React.Component {
+class PickPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
@@ -29,28 +29,25 @@ class PartsPage extends React.Component {
     return (
       <CenterPage title="Pick Parts">
         <div id="timeline-holder">
-          {parts.map((cat, ind) => {
-            return (
-              <PartsCategory
-                category={cat}
-                key={cat.name}
-                first={ind === 0}
-                last={ind === parts.length - 1}
-                active={ind === active}
-                addPart={(name, disc, image) => actions.addPart(name, disc, image, cat)}
-                removePart={() => actions.removePart(cat)}
-                nextCategory={() => actions.nextCategory(cat)}
-                prevCategory={() => actions.prevCategory(cat)}
-              >
-              </PartsCategory>
-          );})}
+          {parts.map((cat, ind) => (
+            <PartsCategory
+              category={cat}
+              key={cat.name}
+              first={ind === 0}
+              last={ind === parts.length - 1}
+              active={ind === active}
+              selectPart = {index => actions.selectPart(cat, index)}
+              completeCategory = {() => actions.completeCategory(cat)}
+            >
+            </PartsCategory>
+          ))}
         </div>
       </CenterPage>
     );
   }
 }
 
-PartsPage.propTypes = {
+PickPage.propTypes = {
   parts: PropTypes.array,
   active: PropTypes.number
 };
@@ -58,14 +55,14 @@ PartsPage.propTypes = {
 function mapStateToProps(state, ownProps) {
   return {
     parts: state.parts.list,
-    active: state.parts.adding
+    active: state.parts.active
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(partsActions, dispatch)
+    actions: bindActionCreators(pickActions, dispatch)
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PartsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(PickPage);

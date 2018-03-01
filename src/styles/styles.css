@@ -349,14 +349,15 @@ form {
 	display: none;
 }
 
-.part-select__radio:checked+.part-select__option {
+.part-select__option--selected {
 	border-color: #0e1;
 	margin-left: 4px;
 	border-left-width: 16px;
 }
 
 
-.part-select__radio:checked+.part-select__option .part-select__description {
+.part-select__option--selected > .part-select__option,
+.part-select__option--selected > .part-select__description {
 	height: auto;
 }
 

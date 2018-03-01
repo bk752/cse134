@@ -31,16 +31,17 @@ class Category {
 
 	addPart(name, desc, image) {
 		if (Array.isArray(name)) {
-			this.parts = this.parts.concat(name);
+			this.parts = [...this.parts, ...name];
 		} else if (name.constructor === Part) {
-			this.parts.push(name);
+			this.parts = [...this.parts, name];
 		} else {
-			this.parts.push(new Part(name, desc, image));
+			this.parts = [...this.parts, new Part(name, desc, image)];
 		}
 		return this;
 	}
 
 	removePart() {
+		this.parts = [...this.parts];
 		this.parts.pop();
 	}
 }

@@ -22,7 +22,8 @@ export default {
         new Part("option c", "information about third option", "images/gpu3.jpeg"),
       ]),
     ],
-    active: 0
+    active: 0,
+    adding: 0
   },
   ajaxCallsInProgress: 0
 };
