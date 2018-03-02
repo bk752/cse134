@@ -6,6 +6,7 @@ import AboutPage from './components/about/AboutPage';
 import PartsPage from './components/parts/PartsPage';
 import PickPage from './components/pick/PickPage';
 import ProgressPage from './components/progress/ProgressPage';
+import DescriptionPage from './components/description/DescriptionPage';
 
 export default (
   <Route path="/" component={App}>
@@ -14,5 +15,6 @@ export default (
     <Route path="pick" component={PickPage} />
     <Route path="progress" component={ProgressPage} />
     <Route path="about" component={AboutPage} />
+    <Route path="description" component={DescriptionPage} />
   </Route>
 );
