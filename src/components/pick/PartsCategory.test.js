@@ -1,6 +1,6 @@
 import expect from 'expect';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import ShallowRenderer from 'react-test-renderer/shallow';
 import PartsCategory from './PartsCategory';
 import Category from '../../objects/Category';
 import Part from '../../objects/Part';
@@ -14,7 +14,7 @@ function setup(saving) {
 	  active: true,
   };
 
-  let renderer = TestUtils.createRenderer();
+  let renderer = new ShallowRenderer();
   renderer.render(<PartsCategory {...props}/>);
   let output = renderer.getRenderOutput();
 
@@ -26,7 +26,7 @@ function setup(saving) {
 }
 
 describe('PartsCategory via React Test Utils', () => {
-  it('renders form and h1', () => {
+  it('renders form in Timeline', () => {
     const { output } = setup();
     expect(output.type).toEqual(Timeline);
     let form = output.props.children;

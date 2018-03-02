@@ -56,7 +56,6 @@ export default {
 		  ]
 	  },
       {
-		  test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 
 		  test: /(\.jpe?g)$/, 
 		  use: [
 			  {

@@ -41,6 +41,7 @@ class PartsCategory extends React.Component {
 		);
 	}
 }
+
 PartsCategory.propTypes = {
 	category: PropTypes.instanceOf(Category),
 	selectPart: PropTypes.func,
