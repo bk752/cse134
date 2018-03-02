@@ -2,9 +2,8 @@ import webpack from 'webpack';
 import path from 'path';
 
 export default {
-  debug: true,
   devtool: 'cheap-module-source-map',
-  noInfo: false,
+  mode: 'development',
   entry: [
     'eventsource-polyfill', // necessary for hot reloading with IE
     'webpack-hot-middleware/client?reload=true', //note that it reloads the page if hot module reloading fails.
@@ -20,18 +19,75 @@ export default {
     contentBase: './src'
   },
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+		debug: true
+	}),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
   ],
   module: {
-    loaders: [
-      {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
-      {test: /(\.css)$/, loaders: ['style', 'css']},
-      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file"},
-      {test: /(\.jpe?g)$/, loader: "file"},
-      {test: /\.(woff|woff2)$/, loader: "url?prefix=font/&limit=5000"},
-      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream"},
-      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml"}
+    rules: [
+      {
+		  test: /(\.js)$/, 
+		  include: path.join(__dirname, 'src'),
+		  use: [
+			  {
+				  loader: "babel-loader"
+			  }
+		  ]
+	  },
+      {
+		  test: /(\.css)$/, 
+		  use: [
+			  {
+				  loader: "style-loader"
+			  },
+			  {
+				  loader: "css-loader"
+			  }
+		  ]
+	  },
+      {
+		  test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 
+		  use: [
+			  {
+				  loader: "file-loader"
+			  }
+		  ]
+	  },
+      {
+		  test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 
+		  test: /(\.jpe?g)$/, 
+		  use: [
+			  {
+				  loader: "file-loader"
+			  }
+		  ]
+	  },
+      {
+		  test: /\.(woff|woff2)$/, 
+		  use: [
+			  {
+				  loader: "url-loader?prefix=font/&limit=5000"
+			  }
+		  ]
+	  },
+      {
+		  test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, 
+		  use: [
+			  {
+				  loader: "url-loader?limit=10000&mimetype=application/octet-stream"
+			  }
+		  ]
+	  },
+      {
+		  test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
+		  use: [
+			  {
+				  loader: "url-loader?limit=10000&mimetype=image/svg+xml"
+			  }
+		  ]
+	  },
     ]
   }
 };

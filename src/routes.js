@@ -1,6 +1,7 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { BrowserRouter, Route, IndexRoute } from 'react-router-dom';
 import App from './components/App';
+import Header from './components/common/Header';
 import HomePage from './components/home/HomePage';
 import AboutPage from './components/about/AboutPage';
 import PartsPage from './components/parts/PartsPage';
@@ -8,11 +9,11 @@ import PickPage from './components/pick/PickPage';
 import ProgressPage from './components/progress/ProgressPage';
 
 export default (
-  <Route path="/" component={App}>
-    <IndexRoute component={HomePage} />
-    <Route path="parts" component={PartsPage} />
-    <Route path="pick" component={PickPage} />
-    <Route path="progress" component={ProgressPage} />
-    <Route path="about" component={AboutPage} />
-  </Route>
+	<div>
+        <Header/>
+		<Route path="/parts" component={PartsPage} />
+		<Route path="/pick" component={PickPage} />
+		<Route path="/progress" component={ProgressPage} />
+		<Route path="/about" component={AboutPage} />
+	</div>
 );
