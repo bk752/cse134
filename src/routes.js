@@ -7,6 +7,7 @@ import PartsPage from './components/parts/PartsPage';
 import PickPage from './components/pick/PickPage';
 import ProgressPage from './components/progress/ProgressPage';
 import DescriptionPage from './components/description/DescriptionPage';
+import ChatPage from './components/chat/ChatPage';
 
 export default (
   <Route path="/" component={App}>
@@ -16,5 +17,6 @@ export default (
     <Route path="progress" component={ProgressPage} />
     <Route path="about" component={AboutPage} />
     <Route path="description" component={DescriptionPage} />
+    <Route path="chat" component={ChatPage} />
   </Route>
 );
