@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as pickActions from '../../actions/pickActions';
@@ -44,7 +45,7 @@ class ProgressPage extends React.Component {
 	undoStep() {
 		let steps = this.state.steps;
 		steps = [...steps.map((step, ind)=> {
-			if (ind !== this.state.active) {
+			if (ind !== this.state.active-1) {
 				return step;
 			} else {
 				return (new Step(step.name)).reset();

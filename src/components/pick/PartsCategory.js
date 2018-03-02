@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import PartsOption from '../common/PartsOption.js';
 import Category from '../../objects/Category.js';
 import Timeline from '../common/Timeline';
@@ -18,7 +19,7 @@ class PartsCategory extends React.Component {
 				last={this.props.last}
 				title={category.name}
 				info={category.picked ? category.picked.name : false}
-				done={category.picked}
+				done={!!category.picked}
 				image={category.picked.image}
 			>
 				{this.props.active ? 

@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Step from '../../objects/Step';
 import Timeline from '../common/Timeline';
 
@@ -17,7 +18,7 @@ function ProgressStep(props) {
 					{(props.activeOffset === -1) ? <button onClick={props.undoStep}>Undo</button> : false}
 				</div>
 			}
-			done={step.date}
+			done={!!step.date}
 			image={false}
 		>
 		</Timeline>
