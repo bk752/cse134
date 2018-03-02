@@ -17,7 +17,7 @@ function PartsOption(props) {
 	);
 }
 PartsOption.propTypes = {
-	part: PropTypes.instanceOf(Part),
+	part: PropTypes.instanceOf(Part).isRequired,
 	selected: PropTypes.bool,
 	selectPart: PropTypes.func
 };

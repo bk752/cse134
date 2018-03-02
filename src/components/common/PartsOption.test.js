@@ -1,21 +1,21 @@
 import expect from 'expect';
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
-import PartsCategory from './PartsCategory';
+import PartsOption from './PartsOption';
 import Category from '../../objects/Category';
 import Part from '../../objects/Part';
 import Timeline from '../common/Timeline';
 
-function setup(saving) {
+function setup(part) {
   let props = {
-	  category: new Category("Category"),
+	  part,
 	  first: true,
 	  last: true,
 	  active: true,
   };
 
   let renderer = new ShallowRenderer();
-  renderer.render(<PartsCategory {...props}/>);
+  renderer.render(<PartsOption {...props}/>);
   let output = renderer.getRenderOutput();
 
   return {
@@ -26,35 +26,11 @@ function setup(saving) {
 }
 
 describe('PartsCategory via React Test Utils', () => {
-  it('renders form in Timeline', () => {
-    const { output } = setup();
-    expect(output.type).toEqual(Timeline);
-    let form = output.props.children;
-    expect(form.type).toBe('form');
+  it('renders title and description', () => {
+	let part = new Part("part", "desc", "img");
+    const { output } = setup(part);
+    expect(output.type).toEqual('label');
+    let description = output.props.children[2];
+    expect(description.props.children).toEqual(part.desc);
   });
 });
-
-
-/*
-import React from 'react';
-import expect from 'expect';
-import {mount, shallow} from 'enzyme';
-import {ManageCoursePage} from './ManageCoursePage';
-
-describe ('Manage Course Page', () => {
-  it('sets error message when trying to save empty title', () => {
-    const props = {
-      authors: [],
-      actions: { saveCourse: () => { return Promise.resolve(); }},
-      course: {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''}
-    };
-
-    const wrapper = mount(<ManageCoursePage {...props}/>);
-    const saveButton = wrapper.find('input').last();
-    expect(saveButton.prop('type')).toBe('submit');
-    saveButton.simulate('click');
-    expect(wrapper.state().errors.title).toBe('Title must be at least 5 characters.');
-
-  });
-});
- */
