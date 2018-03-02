@@ -45,7 +45,7 @@ class ProgressPage extends React.Component {
 	undoStep() {
 		let steps = this.state.steps;
 		steps = [...steps.map((step, ind)=> {
-			if (ind !== this.state.active) {
+			if (ind !== this.state.active-1) {
 				return step;
 			} else {
 				return (new Step(step.name)).reset();
