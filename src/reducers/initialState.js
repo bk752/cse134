@@ -2,8 +2,6 @@ import Part from '../objects/Part';
 import Category from '../objects/Category';
 
 export default {
-  authors: [],
-  courses: [],
   parts: {
     list: [
       new Category("CPU").addPart([
@@ -24,6 +22,5 @@ export default {
     ],
     active: 0,
     adding: 0
-  },
-  ajaxCallsInProgress: 0
+  }
 };

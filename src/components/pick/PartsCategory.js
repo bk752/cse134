@@ -44,7 +44,6 @@ PartsCategory.propTypes = {
 	category: PropTypes.instanceOf(Category),
 	selectPart: PropTypes.func,
 	completeCategory: PropTypes.func,
-	expand: PropTypes.bool,
 	first: PropTypes.bool,
 	last: PropTypes.bool,
 	active: PropTypes.bool

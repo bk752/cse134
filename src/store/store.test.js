@@ -2,25 +2,22 @@ import expect from 'expect';
 import { createStore } from 'redux';
 import rootReducer from '../reducers';
 import initialState from '../reducers/initialState';
-import * as courseActions from '../actions/courseActions';
+import * as partsActions from '../actions/partsActions';
+import Part from '../objects/Part';
 
 describe('Store', function() {
   it('Should handle creating courses', function() {
     // arrange
     const store = createStore(rootReducer, initialState);
-    const course = {
-      title: "Clean Code"
-    };
+	const category = initialState.parts.list[0];
 
     // act
-    const action = courseActions.createCourseSuccess(course);
+    const action = partsActions.addPart("part", "description", "img", category);
     store.dispatch(action);
 
     // assert
-    const actual = store.getState().courses[0];
-    const expected = {
-      title: "Clean Code"
-    };
+    const actual = store.getState().parts.list[0].parts[3];
+    const expected = new Part("part", "description", "img");
 
     expect(actual).toEqual(expected);
   });
