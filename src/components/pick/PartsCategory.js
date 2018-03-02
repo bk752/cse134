@@ -19,7 +19,7 @@ class PartsCategory extends React.Component {
 				title={category.name}
 				info={category.picked ? category.picked.name : false}
 				done={category.picked}
-				image={category.picked}
+				image={category.picked.image}
 			>
 				{this.props.active ? 
 					<form className="part-select">

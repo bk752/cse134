@@ -13,6 +13,7 @@ function CenterPage(props) {
 
 CenterPage.propTypes = {
 	title: PropTypes.string.isRequired,
+	children: PropTypes.node.isRequired
 };
 
 export default CenterPage;

@@ -35,6 +35,13 @@ function Timeline(props) {
 
 Timeline.propTypes = {
   title: PropTypes.string.isRequired,
+  active: PropTypes.bool,
+  first: PropTypes.bool,
+  last: PropTypes.bool,
+  done: PropTypes.bool,
+  image: PropTypes.node,
+  info: PropTypes.node,
+  children: PropTypes.node
 };
 
 export default Timeline;
