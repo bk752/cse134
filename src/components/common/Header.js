@@ -10,6 +10,8 @@ const Header = () => {
 					<Link to="/" className="header__title">PCMaker.party</Link>
 					<span className="header__account-info">
 						<Link to="/">Log out</Link>
+						<Link to="/signup">Sign Up</Link>
+						<Link to="/signin">Sign In</Link>
 					</span>
 				</div>
 			</header>

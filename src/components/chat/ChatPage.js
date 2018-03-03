@@ -144,7 +144,7 @@ class ChatPage extends React.Component {
 				<td>{part.name}</td>
 				<td>{"$"+part.desc.toFixed(2)}</td>
 			</tr>
-		)
+		);
 	}
 
 	PartsMessage(part) {

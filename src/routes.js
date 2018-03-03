@@ -9,6 +9,8 @@ import PickPage from './components/pick/PickPage';
 import ProgressPage from './components/progress/ProgressPage';
 import DescriptionPage from './components/description/DescriptionPage';
 import ChatPage from './components/chat/ChatPage';
+import SignUpPage from './components/account/SignUpPage';
+import SignInPage from './components/account/SignInPage';
 
 export default (
 	<div>
@@ -20,5 +22,7 @@ export default (
 		<Route path="/about" component={AboutPage} />
 		<Route path="/description" component={DescriptionPage} />
 		<Route path="/chat" component={ChatPage} />
+		<Route path="/signup" component={SignUpPage} />
+		<Route path="/signin" component={SignInPage} />
 	</div>
 );
