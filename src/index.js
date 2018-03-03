@@ -11,10 +11,10 @@ import './styles/styles.css'; //Webpack can import CSS files too!
 const store = configureStore();
 
 render(
-  <Provider store={store}>
-    <BrowserRouter>
-		{routes}
-	</BrowserRouter>
-  </Provider>,
-  document.getElementById('app')
+	<Provider store={store}>
+		<BrowserRouter>
+			{routes}
+		</BrowserRouter>
+	</Provider>,
+	document.getElementById('app')
 );

@@ -20,8 +20,7 @@ function ProgressStep(props) {
 			}
 			done={!!step.date}
 			image={false}
-		>
-		</Timeline>
+		/>
 	);
 }
 ProgressStep.propTypes = {
@@ -34,4 +33,4 @@ ProgressStep.propTypes = {
 	undoStep: PropTypes.func
 };
 
-export default ProgressStep
+export default ProgressStep;

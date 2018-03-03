@@ -12,7 +12,7 @@ import ChatPage from './components/chat/ChatPage';
 
 export default (
 	<div>
-        <Header/>
+		<Header/>
 		<Route exact path="/" component={HomePage} />
 		<Route path="/parts" component={PartsPage} />
 		<Route path="/pick" component={PickPage} />

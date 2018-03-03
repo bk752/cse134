@@ -30,13 +30,12 @@ class PartsCategory extends React.Component {
 									part={val}
 									selected={val.name === category.picked.name}
 									selectPart={() => this.props.selectPart(ind)}
-									key={val.name}>
-								</PartsOption>
+									key={val.name} />
 							))}
 						</div>
 						<button type="button" onClick={this.props.completeCategory}>Done</button>
 					</form>
-			 : false}
+					: false}
 			</Timeline>
 		);
 	}

@@ -7,7 +7,7 @@ function CenterPage(props) {
 			<div className="pagetitle">
 				{props.title}
 			</div>
-				{props.children}
+			{props.children}
 		</div>
 	);
 }

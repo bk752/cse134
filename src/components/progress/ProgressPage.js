@@ -72,8 +72,7 @@ class ProgressPage extends React.Component {
 							activeOffset={ind - active}
 							completeStep={this.completeStep}
 							undoStep={this.undoStep}
-						>
-						</ProgressStep>
+						/>
 					))}
 				</div>
 			</CenterPage>

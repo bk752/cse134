@@ -13,25 +13,25 @@ import gpu2Image from '../../images/gpu2.jpeg';
 import gpu3Image from '../../images/gpu3.jpeg';
 
 export default {
-  parts: {
-    list: [
-      new Category("CPU").addPart([
-        new Part("option a", "information about first option", i3Image),
-        new Part("option b", "information about second option", i5Image),
-        new Part("option c", "information about third option", i7Image),
-      ]),
-      new Category("Motherboard").addPart([
-        new Part("option a", "information about first option", mb1Image),
-        new Part("option b", "information about second option", mb2Image),
-        new Part("option c", "information about third option", mb3Image)
-      ]),
-      new Category("GPU").addPart([
-        new Part("option a", "information about first option", gpu1Image),
-        new Part("option b", "information about second option", gpu2Image),
-        new Part("option c", "information about third option", gpu3Image)
-      ]),
-    ],
-    active: 0,
-    adding: 0
-  }
+	parts: {
+		list: [
+			new Category("CPU").addPart([
+				new Part("option a", "information about first option", i3Image),
+				new Part("option b", "information about second option", i5Image),
+				new Part("option c", "information about third option", i7Image),
+			]),
+			new Category("Motherboard").addPart([
+				new Part("option a", "information about first option", mb1Image),
+				new Part("option b", "information about second option", mb2Image),
+				new Part("option c", "information about third option", mb3Image)
+			]),
+			new Category("GPU").addPart([
+				new Part("option a", "information about first option", gpu1Image),
+				new Part("option b", "information about second option", gpu2Image),
+				new Part("option c", "information about third option", gpu3Image)
+			]),
+		],
+		active: 0,
+		adding: 0
+	}
 };

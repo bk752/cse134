@@ -76,8 +76,7 @@ class PartsCategory extends React.Component {
 									part={val}
 									selected={ind === this.state.selected}
 									selectPart={() => this.setState({selected: ind})}
-									key={val.name}>
-								</PartsOption>
+									key={val.name} />
 							))}
 						</form>
 						<form className="part-add">
@@ -111,7 +110,7 @@ class PartsCategory extends React.Component {
 										cols={40}
 										name="description"
 										onChange={this.handleDescChange}
-									></textarea>
+									/>
 								</div>
 								<button type="button" className="part__add-option" onClick={this.addPart}>
 									Add option
@@ -128,7 +127,7 @@ class PartsCategory extends React.Component {
 							</div>
 						</form>
 					</div>
-				 : 
+					: 
 					<div className="timeline-item__info">
 						{category.parts.length ? `${category.parts.length} options` : ""}
 					</div>
@@ -149,4 +148,4 @@ PartsCategory.propTypes = {
 	prevCategory: PropTypes.func
 };
 
-export default PartsCategory
+export default PartsCategory;
