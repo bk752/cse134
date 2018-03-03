@@ -9,7 +9,7 @@ import {browserHistory} from 'react-router';
 
 import Step from '../../objects/Step';
 
-class ProgressPage extends React.Component {
+export class ProgressPage extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		this.completeStep = this.completeStep.bind(this);
