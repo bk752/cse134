@@ -10,7 +10,7 @@ import {browserHistory} from 'react-router';
 import Category from '../../objects/Category';
 import Part from '../../objects/Part';
 
-class PartsPage extends React.Component {
+export class PartsPage extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
