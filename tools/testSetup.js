@@ -37,6 +37,9 @@ Object.keys(document.defaultView).forEach((property) => {
 	}
 });
 
+if (!global.document) {
+	require('jsdom-global')();
+}
 global.navigator = {
 	userAgent: 'node.js'
 };

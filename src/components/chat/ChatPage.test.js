@@ -1,0 +1,93 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import expect from 'expect';
+import { mount, configure } from 'enzyme';
+import ShallowRenderer from 'react-test-renderer/shallow';
+import CenterPage from '../common/CenterPage';
+import Message from '../../objects/Message';
+import Part from '../../objects/Part';
+import ChatPage from './ChatPage';
+import Category from '../../objects/Category';
+import i3Image from '../../../images/i3.jpeg';
+import i5Image from '../../../images/i5.jpeg';
+import i7Image from '../../../images/i7.jpeg';
+
+import mb1Image from '../../../images/mb1.jpeg';
+import mb2Image from '../../../images/mb2.jpeg';
+import mb3Image from '../../../images/mb3.jpeg';
+
+import gpu1Image from '../../../images/gpu1.jpeg';
+import gpu2Image from '../../../images/gpu2.jpeg';
+import gpu3Image from '../../../images/gpu3.jpeg';
+
+function setup() {
+	let renderer = new ShallowRenderer();
+	renderer.render(<ChatPage/>);
+	let output = renderer.getRenderOutput();
+
+	return {output, renderer};
+}
+
+describe('Test ChatPage React Components', () => {
+	it('initial rendering of chat page', () => {
+		const {output} = setup();
+		expect(output.type).toBe('div');
+		expect(output.props.children.length).toBe(2);
+
+		let price = output.props.children[0];
+		expect(price.type).toBe('div');
+		expect(price.props.className).toBe('price');
+
+		let table = price.props.children;
+		expect(table.type).toBe('table');
+		expect(table.props.className).toBe('price__table');
+
+		let head = table.props.children[0];
+		expect(head.type).toBe('thead');
+		expect(head.props.children.props.children[0].props.children).toBe('Part');
+		expect(head.props.children.props.children[1].props.children).toBe('Price');
+
+		let body = table.props.children[1];
+		expect(body.type).toBe('tbody');
+
+		let foot = table.props.children[2];
+		expect(foot.type).toBe('tfoot');
+		expect(foot.props.children.props.children[0].props.children).toBe('Total');
+		expect(foot.props.children.props.children[1].props.children).toBe('$687.68');
+
+		let chatMessaging = output.props.children[1];
+		expect(chatMessaging.type).toBe('div');
+		expect(chatMessaging.props.className).toBe('chat__messaging');
+
+		let log = chatMessaging.props.children[0];
+		expect(log.type).toBe('div');
+		expect(log.props.className).toBe('chat__log');
+		expect(log.props.id).toBe('chatLog');
+		expect(log.props.children.length).toBe(5);
+
+		let input = chatMessaging.props.children[1];
+		expect(input.type).toBe('div');
+		expect(input.props.className).toBe('chat__input');
+		
+		let textarea = input.props.children[0];
+		expect(textarea.type).toBe('textarea');
+		let send = input.props.children[1];
+		expect(send.type).toBe('button');
+		let partsButton = input.props.children[2];
+		expect(partsButton.type).toBe('button');
+	});
+
+	it('test removing messages', () => {
+		const wrapper = mount(<ChatPage/>);
+		let chatLog = wrapper.find('#chatLog');
+		let messages = chatLog.children();
+		expect(messages.length).toBe(5);
+		
+	});
+
+	it('test calculate total messages', () => {
+		const wrapper = mount(<ChatPage/>);
+		let sum = wrapper.instance().calculateTotal();
+		expect(sum).toBe("687.68");
+	});
+});

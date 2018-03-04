@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ChatMessage from './ChatMessage';
 import CenterPage from '../common/CenterPage';
 import Message from '../../objects/Message';
 import Part from '../../objects/Part';
@@ -50,8 +51,10 @@ class ChatPage extends React.Component {
 		this.keyPress = this.keyPress.bind(this);
 		this.sendOnClick = this.sendOnClick.bind(this);
 		this.partsOnClick = this.partsOnClick.bind(this);
+		this.addPartToList = this.addPartToList.bind(this);
+		this.removeMessage = this.removeMessage.bind(this);
 	}
-    componentDidUpdate() {
+	componentDidUpdate() {
 		let chatLog = document.getElementById("chatLog");
 		chatLog.scrollTop = chatLog.scrollHeight;
 	}
@@ -147,85 +150,6 @@ class ChatPage extends React.Component {
 		);
 	}
 
-	PartsMessage(part) {
-		const {name, desc, image} = part;
-		return (
-			<div className="part-card">
-				<img className="part-card__image" src={image} alt="placeholder"/>
-				<div className="part-card__title">
-					{name}
-				</div>
-				<div className="part-card__description">
-					{"$"+desc.toFixed(2)}
-				</div>
-				<button className="part-card__add" onClick={
-					() => {
-						this.addPartToList(part);
-					}
-				}>
-					Add part
-				</button>
-			</div>
-		);
-	}
-
-	ChatMessage (msg) {
-		let chatLog = document.getElementById("chatLog");
-		let messageBox = document.getElementById("chatTextbox");
-		const {id, owner, message, part, cat} = msg;
-		if (cat) {
-			let partsList = cat.parts;
-			return (
-				<div id={id} className="chat__message-holder chat__message-holder--user">
-					<div className="chat__message">
-						{partsList.map((part, ind) => (
-							this.PartsMessage(part)
-						))}
-						<button className="part-card__add" onClick={
-							() => {
-								this.removeMessage(id);
-							}
-						}>
-							Close
-						</button>
-					</div>
-				</div>
-			);
-		}
-		if (part) {
-			return (
-				<div id={id} className={owner == 'user' ? "chat__message-holder chat__message-holder--user" : "chat__message-holder"}>
-					<div className="chat__message">
-						{message}
-						<div className="part-card">
-							<img className="part-card__image" src={part.image} alt="placeholder"/>
-							<div className="part-card__title">
-								{part.name}
-							</div>
-							<div className="part-card__description">
-								{"$"+part.desc.toFixed(2)}
-							</div>
-							<button className="part-card__add" onClick={
-								() => {
-									this.addPartToList(part);
-								}
-							}>
-								Add to Build
-							</button>
-						</div>
-					</div>
-				</div>
-			);
-		}
-		return (
-			<div id={id} className={owner == 'user' ? "chat__message-holder chat__message-holder--user" : "chat__message-holder"}>
-				<div className="chat__message">
-					{message}
-				</div>
-			</div>
-		);
-	}
-
 	render() {
 		let messages = this.state.messages;
 		return (
@@ -254,7 +178,16 @@ class ChatPage extends React.Component {
 				<div className="chat__messaging">
 					<div id="chatLog" className="chat__log">
 						{messages.map((message, ind) => (
-							this.ChatMessage(message)	
+							<ChatMessage
+								id={message.id}
+								owner={message.owner}
+								msg={message.message}
+								part={message.part}
+								cat={message.cat}
+								closeFunc={this.removeMessage}
+								addFunc={this.addPartToList}
+								key={message.id}
+							/>
 						))}
 					</div>
 					<div className="chat__input">
