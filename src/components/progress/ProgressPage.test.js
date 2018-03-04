@@ -40,11 +40,11 @@ describe('ProgressPage via React Test Utils', () => {
 			active: initialState.parts.active
 		};
 
-		const wrapper = shallow(<ProgressPage {...props}/>)
-		expect(wrapper.state().active).toBe(0)
-		let sum = wrapper.instance()
-		sum.completeStep()
-		expect(wrapper.state().active).toBe(1)
+		const wrapper = shallow(<ProgressPage {...props}/>);
+		expect(wrapper.state().active).toBe(0);
+		let sum = wrapper.instance();
+		sum.completeStep();
+		expect(wrapper.state().active).toBe(1);
 	});
 
 	it('test step undo', () => {
@@ -53,10 +53,10 @@ describe('ProgressPage via React Test Utils', () => {
 			active: initialState.parts.active
 		};
 
-		const wrapper = shallow(<ProgressPage {...props}/>)
-		expect(wrapper.state().active).toBe(0)
-		let sum = wrapper.instance()
-		sum.undoStep()
-		expect(wrapper.state().active).toBe(-1)
+		const wrapper = shallow(<ProgressPage {...props}/>);
+		expect(wrapper.state().active).toBe(0);
+		let sum = wrapper.instance();
+		sum.undoStep();
+		expect(wrapper.state().active).toBe(-1);
 	});
 });
