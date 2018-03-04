@@ -32,7 +32,9 @@ describe('Timeline via React Test Utils', () => {
 		expect(output.props.className).toContain('timeline-item--active');
 		expect(output.props.className).toContain('timeline-item--first');
 		expect(output.props.className).not.toContain('timeline-item--last');
-		let checkline = output.props.children[0];
-		expect(checkline.type).toEqual('div');
+		let text = output.props.children[1];
+		expect(text.type).toEqual('div');
+		expect(text.props.children[0].props.children).toEqual("title");
+		expect(text.props.children[1].props.children).toEqual("information");
 	});
 });

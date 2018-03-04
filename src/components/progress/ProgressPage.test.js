@@ -24,11 +24,12 @@ function setup(saving) {
 	};
 }
 
-describe('PartsCategory via React Test Utils', () => {
+describe('ProgressPage via React Test Utils', () => {
 	it('renders div in CenterPage', () => {
 		const { output } = setup();
 		expect(output.type).toEqual(CenterPage);
 		let div = output.props.children;
 		expect(div.type).toBe('div');
+		expect(div.props.children.length).toBe(6);
 	});
 });

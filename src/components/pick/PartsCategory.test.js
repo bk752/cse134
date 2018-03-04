@@ -6,12 +6,12 @@ import Category from '../../objects/Category';
 import Part from '../../objects/Part';
 import Timeline from '../common/Timeline';
 
-function setup(saving) {
+function setup(active) {
 	let props = {
 		category: new Category("Category"),
 		first: true,
 		last: true,
-		active: true,
+		active,
 	};
 
 	let renderer = new ShallowRenderer();
@@ -27,9 +27,16 @@ function setup(saving) {
 
 describe('PartsCategory via React Test Utils', () => {
 	it('renders form in Timeline', () => {
-		const { output } = setup();
+		const { output } = setup(true);
 		expect(output.type).toEqual(Timeline);
 		let form = output.props.children;
 		expect(form.type).toBe('form');
+	});
+
+	it('does not render form in Timeline', () => {
+		const { output } = setup(false);
+		expect(output.type).toEqual(Timeline);
+		let form = output.props.children;
+		expect(form).toBe(false);
 	});
 });

@@ -47,7 +47,7 @@ describe('PartsCategory via React Test Utils', () => {
 		expect(form.type).toBe('div');
 	});
 
-	it('Check previous section button', () => {
+	it('Check next section button', () => {
 		index = 0;
 		const wrapper = mount(<PartsCategory {...props}/>);
 		const prevButton = wrapper.find('button').last();
@@ -56,7 +56,7 @@ describe('PartsCategory via React Test Utils', () => {
 		expect(index).toBe(-1);
 	});
 
-	it('Check next section button', () => {
+	it('Check previous section button', () => {
 		index = 0;
 		const wrapper = mount(<PartsCategory {...props}/>);
 		const nextButton = wrapper.find('button').at(2);

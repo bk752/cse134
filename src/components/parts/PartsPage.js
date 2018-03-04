@@ -52,7 +52,8 @@ export class PartsPage extends React.Component {
 
 PartsPage.propTypes = {
 	parts: PropTypes.array,
-	active: PropTypes.number
+	active: PropTypes.number,
+	actions: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {

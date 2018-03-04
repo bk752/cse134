@@ -11,20 +11,17 @@ function ProgressStep(props) {
 			first={props.first}
 			last={props.last}
 			title={step.name}
-			info={
-				<div>
-					{step.date ? `Completed ${step.date.toDateString()}` : ""}
-					{(props.activeOffset === 0) ? <button onClick={props.completeStep}>Done</button> : false}
-					{(props.activeOffset === -1) ? <button onClick={props.undoStep}>Undo</button> : false}
-				</div>
-			}
+			info={step.date ? `Completed ${step.date.toDateString()}` : ""}
 			done={!!step.date}
 			image={false}
-		/>
+		>
+			{(props.activeOffset === 0) ? <button onClick={props.completeStep}>Done</button> : false}
+			{(props.activeOffset === -1) ? <button onClick={props.undoStep}>Undo</button> : false}
+		</Timeline>
 	);
 }
 ProgressStep.propTypes = {
-	step: PropTypes.instanceOf(Step),
+	step: PropTypes.instanceOf(Step).isRequired,
 	expand: PropTypes.bool,
 	first: PropTypes.bool,
 	last: PropTypes.bool,
