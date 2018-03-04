@@ -36,7 +36,7 @@ function setup(user, part, cat) {
 describe('Test PartsMessage', () => {
 	
 	it('rendering of a message with part card', () => {
-		const output = setup('expert', testPart, false);
+		const output = setup('expert', testPart);
 		expect(output.type).toBe('div');
 		expect(output.props.className).toBe("chat__message-holder");
 		let message = output.props.children;
@@ -70,7 +70,7 @@ describe('Test PartsMessage', () => {
 	});
 
 	it('rendering of a message', () => {
-		const output = setup('user', false, false);
+		const output = setup('user', null, null);
 		expect(output.type).toBe('div');
 		expect(output.props.className).toBe("chat__message-holder chat__message-holder--user");
 		let message = output.props.children;
@@ -81,7 +81,7 @@ describe('Test PartsMessage', () => {
 
 
 	it('rendering of a message', () => {
-		const output = setup('user', false, category);
+		const output = setup('user', null, category);
 		expect(output.type).toBe('div');
 		expect(output.props.className).toBe("chat__message-holder chat__message-holder--user");
 		let message = output.props.children;

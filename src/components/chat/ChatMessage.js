@@ -68,12 +68,12 @@ function ChatMessage (props) {
 }
 
 ChatMessage.propTypes = {
-	id: PropTypes.int,
+	id: PropTypes.number,
 	owner: PropTypes.string,
-	msg: PropTypes.msg,
+	msg: PropTypes.string,
 	part: PropTypes.instanceOf(Part),
 	cat: PropTypes.instanceOf(Category),
-	closeFunc: PropTypes.fun,
+	closeFunc: PropTypes.func,
 	addFunc: PropTypes.func
 };
 export default ChatMessage;
