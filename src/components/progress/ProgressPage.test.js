@@ -45,7 +45,6 @@ describe('ProgressPage via React Test Utils', () => {
 		let sum = wrapper.instance()
 		sum.completeStep()
 		expect(wrapper.state().active).toBe(1)
-		console.log(sum)
 	});
 
 	it('test step undo', () => {
