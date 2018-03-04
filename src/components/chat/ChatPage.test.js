@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import expect from 'expect';
-import { mount, configure } from 'enzyme';
+import { mount, configure, shallow } from 'enzyme';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import CenterPage from '../common/CenterPage';
 import Message from '../../objects/Message';
@@ -78,16 +78,38 @@ describe('Test ChatPage React Components', () => {
 	});
 
 	it('test removing messages', () => {
-		const wrapper = mount(<ChatPage/>);
+		const wrapper = shallow(<ChatPage/>);
 		let chatLog = wrapper.find('#chatLog');
 		let messages = chatLog.children();
 		expect(messages.length).toBe(5);
-		
+		wrapper.instance().removeMessage(1);
+		wrapper.update();
+		chatLog = wrapper.find('#chatLog');
+		messages = chatLog.children();
+		expect(messages.length).toBe(4);
 	});
 
 	it('test calculate total messages', () => {
-		const wrapper = mount(<ChatPage/>);
+		const wrapper = shallow(<ChatPage />)
 		let sum = wrapper.instance().calculateTotal();
 		expect(sum).toBe("687.68");
+		wrapper.instance().addPartToList(new Part('cpu', 100.00, i3Image));
+		sum = wrapper.instance().calculateTotal();
+		expect(sum).toBe("787.68");
+	});
+
+	it('test adding messages', () => {
+		const wrapper = shallow(<ChatPage/>);
+		let chatLog = wrapper.find('#chatLog');
+		let messages = chatLog.children();
+		expect(messages.length).toBe(5);
+		wrapper.instance().addMessage(new Message(5, 'user', 'test'));
+		wrapper.update();
+		chatLog = wrapper.find('#chatLog');
+		messages = chatLog.children();
+		expect(messages.length).toBe(6);
+		expect(chatLog.childAt(5).get(0).props.id).toBe(5);
+		expect(chatLog.childAt(5).get(0).props.msg).toBe('test');
+		expect(chatLog.childAt(5).get(0).props.owner).toBe('user');
 	});
 });
