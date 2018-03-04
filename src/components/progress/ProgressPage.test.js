@@ -1,5 +1,6 @@
 import expect from 'expect';
 import React from 'react';
+import {shallow} from 'enzyme';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import initialState from '../../reducers/initialState';
 import {ProgressPage} from './ProgressPage';
@@ -31,5 +32,32 @@ describe('ProgressPage via React Test Utils', () => {
 		let div = output.props.children;
 		expect(div.type).toBe('div');
 		expect(div.props.children.length).toBe(6);
+	});
+
+	it('test step completion', () => {
+		let props = {
+			parts: initialState.parts.list,
+			active: initialState.parts.active
+		};
+
+		const wrapper = shallow(<ProgressPage {...props}/>)
+		expect(wrapper.state().active).toBe(0)
+		let sum = wrapper.instance()
+		sum.completeStep()
+		expect(wrapper.state().active).toBe(1)
+		console.log(sum)
+	});
+
+	it('test step undo', () => {
+		let props = {
+			parts: initialState.parts.list,
+			active: initialState.parts.active
+		};
+
+		const wrapper = shallow(<ProgressPage {...props}/>)
+		expect(wrapper.state().active).toBe(0)
+		let sum = wrapper.instance()
+		sum.undoStep()
+		expect(wrapper.state().active).toBe(-1)
 	});
 });
