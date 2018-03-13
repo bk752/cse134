@@ -1,6 +1,6 @@
 import expect from 'expect';
 import React from 'react';
-import {shallow} from 'enzyme';
+import {mount} from 'enzyme';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import initialState from '../../reducers/initialState';
 import {ProgressPage} from './ProgressPage';
@@ -10,8 +10,12 @@ import CenterPage from '../common/CenterPage';
 
 function setup(saving) {
 	let props = {
-		parts: initialState.parts.list,
-		active: initialState.parts.active
+		steps: initialState.progress.list,
+		active: initialState.progress.active
+	};
+	props.actions = {
+		completeStep: () => props.active = props.active + 1,
+		undoStep: () => props.active = props.active - 1,
 	};
 
 	let renderer = new ShallowRenderer();
@@ -36,27 +40,36 @@ describe('ProgressPage via React Test Utils', () => {
 
 	it('test step completion', () => {
 		let props = {
-			parts: initialState.parts.list,
-			active: initialState.parts.active
+			steps: initialState.progress.list,
+			active: initialState.progress.active
+		};
+		props.actions = {
+			completeStep: () => props.active = props.active + 1,
+			undoStep: () => props.active = props.active - 1,
 		};
 
-		const wrapper = shallow(<ProgressPage {...props}/>);
-		expect(wrapper.state().active).toBe(0);
-		let sum = wrapper.instance();
-		sum.completeStep();
-		expect(wrapper.state().active).toBe(1);
+		const wrapper = mount(<ProgressPage {...props}/>);
+		expect(props.active).toBe(0);
+		const nextButton = wrapper.find('button').first();
+		nextButton.simulate('click');
+		expect(props.active).toBe(1);
 	});
 
 	it('test step undo', () => {
 		let props = {
-			parts: initialState.parts.list,
-			active: initialState.parts.active
+			steps: initialState.progress.list,
+			active: 1,
+		};
+		props.actions = {
+			completeStep: () => props.active = props.active + 1,
+			undoStep: () => props.active = props.active - 1,
 		};
 
-		const wrapper = shallow(<ProgressPage {...props}/>);
-		expect(wrapper.state().active).toBe(0);
+		const wrapper = mount(<ProgressPage {...props}/>);
+		expect(props.active).toBe(1);
 		let sum = wrapper.instance();
-		sum.undoStep();
-		expect(wrapper.state().active).toBe(-1);
+		const prevButton = wrapper.find('button').first();
+		prevButton.simulate('click');
+		expect(props.active).toBe(0);
 	});
 });

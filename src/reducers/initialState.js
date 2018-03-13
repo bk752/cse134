@@ -1,3 +1,4 @@
+import Step from '../objects/Step';
 import Part from '../objects/Part';
 import Category from '../objects/Category';
 import i3Image from '../../images/i3.jpeg';
@@ -33,5 +34,16 @@ export default {
 		],
 		active: 0,
 		adding: 0
+	},
+	progress: {
+		active: 0,
+		list: [
+			new Step("Description"),
+			new Step("Pick Parts"),
+			new Step("Order Parts"),
+			new Step("Expert Builds Computer"),
+			new Step("Shipping Computer"),
+			new Step("Set up Computer"),
+		]
 	}
 };

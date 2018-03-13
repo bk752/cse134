@@ -90,7 +90,7 @@ describe('Test ChatPage React Components', () => {
 	});
 
 	it('test calculate total messages', () => {
-		const wrapper = shallow(<ChatPage />)
+		const wrapper = shallow(<ChatPage />);
 		let sum = wrapper.instance().calculateTotal();
 		expect(sum).toBe("687.68");
 		wrapper.instance().addPartToList(new Part('cpu', 100.00, i3Image));
