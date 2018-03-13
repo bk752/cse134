@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as pickActions from '../../actions/pickActions';
+import * as progressActions from '../../actions/progressActions';
 import ProgressStep from './ProgressStep';
 import CenterPage from '../common/CenterPage';
 import {browserHistory} from 'react-router';
@@ -10,56 +10,9 @@ import {browserHistory} from 'react-router';
 import Step from '../../objects/Step';
 
 export class ProgressPage extends React.Component {
-	constructor(props, context) {
-		super(props, context);
-		this.completeStep = this.completeStep.bind(this);
-		this.undoStep = this.undoStep.bind(this);
-		this.state = {
-			active: 0,
-			steps: [
-				new Step("Description"),
-				new Step("Pick Parts"),
-				new Step("Order Parts"),
-				new Step("Expert Builds Computer"),
-				new Step("Shipping Computer"),
-				new Step("Set up Computer"),
-			]
-		};
-	}
-
-	completeStep() {
-		let steps = this.state.steps;
-		steps = [...steps.map((step, ind)=> {
-			if (ind !== this.state.active) {
-				return step;
-			} else {
-				return (new Step(step.name)).complete(new Date());
-			}
-		})];
-		this.setState({
-			active: this.state.active+1,
-			steps
-		});
-	}
-
-	undoStep() {
-		let steps = this.state.steps;
-		steps = [...steps.map((step, ind)=> {
-			if (ind !== this.state.active-1) {
-				return step;
-			} else {
-				return (new Step(step.name)).reset();
-			}
-		})];
-		this.setState({
-			active: this.state.active-1,
-			steps
-		});
-	}
-
 	render() {
-		let steps = this.state.steps;
-		let active = this.state.active;
+		let steps = this.props.steps;
+		let active = this.props.active;
 		return (
 			<CenterPage title="Progress Parts">
 				<div id="timeline-holder">
@@ -70,8 +23,8 @@ export class ProgressPage extends React.Component {
 							first={ind === 0}
 							last={ind === steps.length - 1}
 							activeOffset={ind - active}
-							completeStep={this.completeStep}
-							undoStep={this.undoStep}
+							completeStep={() => this.props.actions.completeStep(new Date())}
+							undoStep={this.props.actions.undoStep}
 						/>
 					))}
 				</div>
@@ -81,20 +34,21 @@ export class ProgressPage extends React.Component {
 }
 
 ProgressPage.propTypes = {
-	parts: PropTypes.array,
-	active: PropTypes.number
+	steps: PropTypes.array,
+	active: PropTypes.number,
+	actions: PropTypes.objects
 };
 
 function mapStateToProps(state, ownProps) {
 	return {
-		parts: state.parts.list,
-		active: state.parts.active
+		steps: state.progress.list,
+		active: state.progress.active,
 	};
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators(pickActions, dispatch)
+		actions: bindActionCreators(progressActions, dispatch)
 	};
 }
 

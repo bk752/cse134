@@ -69,7 +69,7 @@ export default function partsReducer(state = initialState.parts, action) {
 
 	case types.EDIT_NEXT_CATEGORY:
 		return {
-      list: state.list,
+			list: state.list,
 			active: state.active,
 			adding: state.adding + 1
 		};
@@ -79,7 +79,7 @@ export default function partsReducer(state = initialState.parts, action) {
 			return state;
 		}
 		return {
-      list: state.list,
+			list: state.list,
 			active: state.active,
 			adding: state.adding - 1
 		};
