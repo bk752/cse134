@@ -68,18 +68,8 @@ export default function partsReducer(state = initialState.parts, action) {
 		};
 
 	case types.EDIT_NEXT_CATEGORY:
-		list = [...state.list.map(cat=> {
-			if (cat.name !== action.category.name) {
-				return cat;
-			} else {
-				let newCat = new Category(action.category);
-				newCat.complete = true;
-				return cat;
-			}
-		})];
-
 		return {
-			list,
+      list: state.list,
 			active: state.active,
 			adding: state.adding + 1
 		};
@@ -88,18 +78,8 @@ export default function partsReducer(state = initialState.parts, action) {
 		if (state.adding === 0) {
 			return state;
 		}
-		list = [...state.list.map(cat=> {
-			if (cat.name !== action.category.name) {
-				return cat;
-			} else {
-				let newCat = new Category(action.category);
-				newCat.complete = false;
-				return cat;
-			}
-		})];
-
 		return {
-			list,
+      list: state.list,
 			active: state.active,
 			adding: state.adding - 1
 		};
