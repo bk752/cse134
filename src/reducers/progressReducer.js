@@ -23,7 +23,7 @@ export default function progressReducer(state = initialState.progress, action) {
 
 	case types.UNDO_STEP:
 		list = [...state.list.map((step, index)=> {
-			if (index !== state.active) {
+			if (index !== state.active - 1) {
 				return step;
 			} else {
 				let newStep = (new Step(step.name));
