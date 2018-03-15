@@ -1,10 +1,13 @@
 import React from 'react';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import CenterPage from '../common/CenterPage';
-
-function SignInPage() {
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as accountActions from '../../actions/accountActions';
+function SignInPage(props) {
 	return (
-		<div classNameName="loginBody">
+		<div className="loginBody">
 			<div className="center">
 				<header className="loginHeader">
 					<div className="innerCenter">
@@ -12,22 +15,37 @@ function SignInPage() {
 					</div>
 				</header>
 				<div className="innerCenter">
-					<form className="login__body" action="/progress">
-						<label><b>Username</b></label>
-						<input className="loginInput" type="text" placeholder="Enter Username" name="uname" required/>
-						<br/>
-						<label><b>Password</b></label>
-						<input className="loginInput" type="password" placeholder="Enter Password" name="psw" required/>
-						<br/>
-						<input type="submit" value="Log In"/>
-					</form>
-					<form action="/">
-						<input type="submit" value="Cancel" />
-					</form>
+					<label><b>Username</b></label>
+					<input className="loginInput" type="text" placeholder="Enter Username" name="uname" required/>
+					<br/>
+					<label><b>Password</b></label>
+					<input className="loginInput" type="password" placeholder="Enter Password" name="psw" required/>
+					<br/>
+					<Link to="/progress">
+						<button onClick={props.actions.login}>Log In</button>
+					</Link>
+					<Link to="/">
+						<button>Cancel</button>
+					</Link>
 				</div>
 			</div>
 		</div>
 	);
 }
 
-export default SignInPage;
+SignInPage.propTypes = {
+	actions: PropTypes.object
+};
+
+
+function mapStateToProps(state) {
+	return {};
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		actions: bindActionCreators(accountActions, dispatch)
+	};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignInPage);

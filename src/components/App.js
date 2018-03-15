@@ -8,9 +8,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="container-fluid">
-				<Header
-					loading={this.props.loading}
-				/>
+				<Header/>
 				{this.props.children}
 			</div>
 		);

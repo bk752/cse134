@@ -5,6 +5,9 @@ import CenterPage from '../common/CenterPage';
 import Message from '../../objects/Message';
 import Part from '../../objects/Part';
 import Category from '../../objects/Category';
+import * as chatActions from '../../actions/chatActions';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import i3Image from '../../../images/i3.jpeg';
 import i5Image from '../../../images/i5.jpeg';
 import i7Image from '../../../images/i7.jpeg';
@@ -35,13 +38,6 @@ class ChatPage extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			messages:[
-				new Message(0, "user", "Hello I would like some help choosing parts."),
-				new Message(1, "expert", "Hello. What can I help you with?"),
-				new Message(2, "user", "I am not sure what kind of motherboard I should get."),
-				new Message(3, "user", "Do you have any recommendations?"),
-				new Message(4, "expert", "How does this motherboard look?", new Part("ATX Motherboard", 109.99, mb1Image))
-			],
 			id: 5,
 			parts:[
 				new Part("NVIDIA GTX 1060", 489.89), 
@@ -68,12 +64,13 @@ class ChatPage extends React.Component {
 	}
 
 	addMessage(message) {
-		this.setState(previousState => {
+		this.props.actions.addMessage(message);
+		/*this.setState(previousState => {
 			return {
 				messages: [...previousState.messages, message],
 				id: previousState.id + 1
 			};
-		});
+		});*/
 	}
 
 	sendMessage() {
@@ -82,7 +79,7 @@ class ChatPage extends React.Component {
 		if (text === "") {
 			return;
 		}
-		let msg = new Message(this.state.id, "user", text);
+		let msg = new Message(this.props.id, "user", text);
 		this.addMessage(msg);
 		messageBox.value = "";
 	}
@@ -113,10 +110,9 @@ class ChatPage extends React.Component {
 		for (let j = 0; j < parts.length; j++) {
 			let cat = parts[j];
 			if (cat.name.toLowerCase() === text.toLowerCase()) {
-				let msg = new Message(this.state.id, "user", "", "", cat);
+				let msg = new Message(this.props.id, "user", null, null, cat);
 				this.addMessage(msg);
 				messageBox.value = "";
-				chatLog.scrollTop = chatLog.scrollHeight;
 				break;
 			}
 		}
@@ -138,12 +134,13 @@ class ChatPage extends React.Component {
 	}
 
 	removeMessage(id) {
-		this.setState(prevState => ({ messages: prevState.messages.filter(msg => msg.id !== id) }));
+		//this.setState(prevState => ({ messages: prevState.messages.filter(msg => msg.id !== id) }));
+		this.props.actions.removeMessage(id);
 	}
 
-	PartsList(part) {
+	PartsList(part, ind) {
 		return(
-			<tr>
+			<tr key={ind}>
 				<td>{part.name}</td>
 				<td>{"$"+part.desc.toFixed(2)}</td>
 			</tr>
@@ -151,7 +148,7 @@ class ChatPage extends React.Component {
 	}
 
 	render() {
-		let messages = this.state.messages;
+		let messages = this.props.messages;
 		return (
 			<div className="chatbox">
 				<div className="price">
@@ -164,7 +161,7 @@ class ChatPage extends React.Component {
 						</thead>
 						<tbody>
 							{this.state.parts.map((part, ind)=> (
-								this.PartsList(part)
+								this.PartsList(part, ind)
 							))}
 						</tbody>
 						<tfoot>
@@ -205,5 +202,23 @@ class ChatPage extends React.Component {
 	}
 }
 
+function mapStateToProps(state, ownProps) {
+	return {
+		messages: state.chat.messages,
+		id: state.chat.id
+	};
+}
 
-export default ChatPage;
+function mapDispatchToProps(dispatch) {
+	return {
+		actions: bindActionCreators(chatActions, dispatch)
+	};
+}
+
+ChatPage.propTypes = {
+	messages: PropTypes.array,
+	id: PropTypes.number,
+	actions: PropTypes.object
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChatPage);

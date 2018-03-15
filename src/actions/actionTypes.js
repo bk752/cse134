@@ -16,3 +16,11 @@ export const EDIT_PREV_CATEGORY = 'EDIT_PREV_CATEGORY';
 
 export const COMPLETE_STEP = 'COMPLETE_STEP';
 export const UNDO_STEP = 'UNDO_STEP';
+
+export const SAVE_DESCRIPTION = 'SAVE_DESCRIPTION';
+
+export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const REMOVE_MESSAGE = 'REMOVE_MESSAGE;';
+
+export const LOG_IN = 'LOG_IN';
+export const LOG_OUT = 'LOG_OUT';

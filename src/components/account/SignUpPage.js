@@ -1,8 +1,11 @@
 import React from 'react';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import CenterPage from '../common/CenterPage';
-
-function SignUpPage() {
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as accountActions from '../../actions/accountActions';
+function SignUpPage(props) {
 	return (
 		<div className="loginBody">
 			<div className="center">
@@ -12,28 +15,45 @@ function SignUpPage() {
 					</div>
 				</div>
 				<div className="innerCenter">
-					<form className="login__body" action="/progress">
-						<label><b>Username</b></label>
-						<input className="loginInput" type="text" placeholder="Enter Username" name="uname" required/>
-						<br/>
-						<label><b>Email</b></label>
-						<input className="loginInput" type="text" placeholder="Enter Email" name="email" required/>
-						<br/>
-						<label><b>Password</b></label>
-						<input className="loginInput" type="password" placeholder="Enter Password" name="psw" required/>
-						<br/>
-						<label><b>Confirm Password</b></label>
-						<input className="loginInput" type="password" placeholder="Confirm Password" name="confirmpsw" required/>
-						<br/>
-						<input type="submit" value="Log In"/>
-					</form>
-					<form action="/">
-						<input type="submit" value="Cancel"/>
-					</form>
+					
+					<label><b>Username</b></label>
+					<input className="loginInput" type="text" placeholder="Enter Username" name="uname" required/>
+					<br/>
+					<label><b>Email</b></label>
+					<input className="loginInput" type="text" placeholder="Enter Email" name="email" required/>
+					<br/>
+					<label><b>Password</b></label>
+					<input className="loginInput" type="password" placeholder="Enter Password" name="psw" required/>
+					<br/>
+					<label><b>Confirm Password</b></label>
+					<input className="loginInput" type="password" placeholder="Confirm Password" name="confirmpsw" required/>
+					<br/>
+					<Link to="/progress">
+						<button onClick={props.actions.login}>Sign Up</button>
+					</Link>
+					<Link to="/">
+						<button>Cancel</button>
+					</Link>
+					
+					
 				</div>
 			</div>
 		</div>
 	);
 }
 
-export default SignUpPage;
+SignUpPage.propTypes = {
+	actions: PropTypes.object
+};
+
+function mapStateToProps(state) {
+	return {};
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		actions: bindActionCreators(accountActions, dispatch)
+	};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpPage);
