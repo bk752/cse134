@@ -29,7 +29,7 @@ export class ChatPage extends React.Component {
 			parts:[
 				new Part("NVIDIA GTX 1060", 489.89), 
 				new Part("i5 Processor", 197.79)
-			]
+			],
 		};
 		this.keyPress = this.keyPress.bind(this);
 		this.sendOnClick = this.sendOnClick.bind(this);
@@ -38,9 +38,11 @@ export class ChatPage extends React.Component {
 		this.removeMessage = this.removeMessage.bind(this);
 		this.addMessage = this.addMessage.bind(this);
 	}
-	componentDidUpdate() {
-		let chatLog = document.getElementById("chatLog");
-		chatLog.scrollTop = chatLog.scrollHeight;
+	componentDidUpdate(prevProps, prevState) {
+		if (prevProps.messages.length < this.props.messages.length) {
+			let chatLog = document.getElementById("chatLog");
+			chatLog.scrollTop = chatLog.scrollHeight;
+		}
 	}
 
 	calculateTotal() {
