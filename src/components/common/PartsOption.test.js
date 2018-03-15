@@ -27,10 +27,10 @@ function setup(part) {
 
 describe('PartsCategory via React Test Utils', () => {
 	it('renders title and description', () => {
-		let part = new Part("part", "desc", "img");
+		let part = new Part("part", 10.00, "img");
 		const { output } = setup(part);
 		expect(output.type).toEqual('label');
 		let description = output.props.children[2];
-		expect(description.props.children).toEqual(part.desc);
+		expect(description.props.children).toEqual("$10.00");
 	});
 });

@@ -355,6 +355,9 @@ form {
 	border-left-width: 16px;
 }
 
+tr.chatPartListEle>td {
+	padding-bottom: 5px;
+}
 
 .part-select__option--selected > .part-select__option,
 .part-select__option--selected > .part-select__description {

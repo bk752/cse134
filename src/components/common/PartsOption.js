@@ -11,7 +11,7 @@ function PartsOption(props) {
 			</span>
 			<br/>
 			<span className="part-select__description">
-				{part.desc}
+				{"$"+part.desc.toFixed(2)}
 			</span>
 		</label>
 	);

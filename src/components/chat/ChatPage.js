@@ -19,21 +19,8 @@ import mb3Image from '../../../images/mb3.jpeg';
 import gpu1Image from '../../../images/gpu1.jpeg';
 import gpu2Image from '../../../images/gpu2.jpeg';
 import gpu3Image from '../../../images/gpu3.jpeg';
-let parts = [
-	new Category("CPU").addPart([
-		new Part("i5 Processor", 197.89, i5Image),
-		new Part("i7 Processor", 569.00, i7Image),
-	]),
-	new Category("Motherboard").addPart([
-		new Part("Micro ATX Motherboard", 59.99, mb1Image),
-		new Part("ATX Motherboard", 109.99, mb2Image),
-	]),
-	new Category("GPU").addPart([
-		new Part("NVIDIA GTX 1060", 489.89, gpu1Image),
-		new Part("Radeon RX 570", 636.99, gpu3Image),
-	]),
-];
 
+import PartsApi from '../../api/partsApi';
 export class ChatPage extends React.Component {
 	constructor (props, context) {
 		super(props, context);
@@ -49,6 +36,7 @@ export class ChatPage extends React.Component {
 		this.partsOnClick = this.partsOnClick.bind(this);
 		this.addPartToList = this.addPartToList.bind(this);
 		this.removeMessage = this.removeMessage.bind(this);
+		this.addMessage = this.addMessage.bind(this);
 	}
 	componentDidUpdate() {
 		let chatLog = document.getElementById("chatLog");
@@ -101,21 +89,35 @@ export class ChatPage extends React.Component {
 	}
 
 	displayParts() {
+		let id = this.props.id;
+		let allParts = this.props.allParts;
 		let chatLog = document.getElementById("chatLog");
 		let messageBox = document.getElementById("chatTextbox");
 		let text = messageBox.value;
 		if (text === "") {
 			return;
 		}
-		for (let j = 0; j < parts.length; j++) {
-			let cat = parts[j];
+		/*for (let j = 0; j < allParts.length; j++) {
+			let cat = allParts[j];
 			if (cat.name.toLowerCase() === text.toLowerCase()) {
 				let msg = new Message(this.props.id, "user", null, null, cat);
 				this.addMessage(msg);
 				messageBox.value = "";
 				break;
 			}
-		}
+		}*/
+		PartsApi.getCategory(text).then(
+			function(category) {
+				let msg = new Message(id, "user", null, null, category);
+				this.addMessage(msg);
+				messageBox.value = "";
+			}.bind(this),
+			function(errorMsg) {
+				let msg = new Message(id, "expert", errorMsg);
+				this.addMessage(msg);
+				messageBox.value = "";
+			}.bind(this)
+		);
 	}
 	keyPress(e) {
 		let key = e.keyCode;
@@ -140,7 +142,7 @@ export class ChatPage extends React.Component {
 
 	PartsList(part, ind) {
 		return(
-			<tr key={ind}>
+			<tr className="chatPartListEle"key={ind}>
 				<td>{part.name}</td>
 				<td>{"$"+part.desc.toFixed(2)}</td>
 			</tr>
@@ -205,7 +207,8 @@ export class ChatPage extends React.Component {
 function mapStateToProps(state, ownProps) {
 	return {
 		messages: state.chat.messages,
-		id: state.chat.id
+		id: state.chat.id,
+		allParts: state.parts.list
 	};
 }
 
@@ -218,7 +221,8 @@ function mapDispatchToProps(dispatch) {
 ChatPage.propTypes = {
 	messages: PropTypes.array,
 	id: PropTypes.number,
-	actions: PropTypes.object
+	actions: PropTypes.object,
+	allParts: PropTypes.array
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatPage);
