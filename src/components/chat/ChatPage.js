@@ -34,9 +34,9 @@ let parts = [
 	]),
 ];
 
-class ChatPage extends React.Component {
-	constructor (props) {
-		super(props);
+export class ChatPage extends React.Component {
+	constructor (props, context) {
+		super(props, context);
 		this.state = {
 			id: 5,
 			parts:[

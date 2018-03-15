@@ -15,7 +15,6 @@ function SignUpPage(props) {
 					</div>
 				</div>
 				<div className="innerCenter">
-					
 					<label><b>Username</b></label>
 					<input className="loginInput" type="text" placeholder="Enter Username" name="uname" required/>
 					<br/>
@@ -34,8 +33,6 @@ function SignUpPage(props) {
 					<Link to="/">
 						<button>Cancel</button>
 					</Link>
-					
-					
 				</div>
 			</div>
 		</div>
