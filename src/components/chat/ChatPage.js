@@ -21,6 +21,7 @@ import gpu2Image from '../../../images/gpu2.jpeg';
 import gpu3Image from '../../../images/gpu3.jpeg';
 
 import PartsApi from '../../api/partsApi';
+import PartsStyle from './PartsStyle';
 export class ChatPage extends React.Component {
 	constructor (props, context) {
 		super(props, context);
@@ -144,9 +145,9 @@ export class ChatPage extends React.Component {
 
 	PartsList(part, ind) {
 		return(
-			<tr className="chatPartListEle"key={ind}>
-				<td>{part.name}</td>
-				<td>{"$"+part.desc.toFixed(2)}</td>
+			<tr key={ind}>
+				<td style={PartsStyle.chatPartListEle}>{part.name}</td>
+				<td style={PartsStyle.chatPartListEle}>{"$"+part.desc.toFixed(2)}</td>
 			</tr>
 		);
 	}
@@ -156,11 +157,11 @@ export class ChatPage extends React.Component {
 		return (
 			<div className="chatbox">
 				<div className="price">
-					<table className="price__table">
+					<table style={PartsStyle.price__table}>
 						<thead>
 							<tr>
-								<th>Part</th>
-								<th>Price</th>
+								<th style={PartsStyle.price_theadth}>Part</th>
+								<th style={PartsStyle.price_theadth}>Price</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -168,10 +169,10 @@ export class ChatPage extends React.Component {
 								this.PartsList(part, ind)
 							))}
 						</tbody>
-						<tfoot>
+						<tfoot style={PartsStyle.price_tabletfoot}>
 							<tr>
-								<td>Total</td>
-								<td>{"$"+this.calculateTotal()}</td>
+								<td style={PartsStyle.price_tfoottd}>Total</td>
+								<td style={PartsStyle.price_tfoottd}>{"$"+this.calculateTotal()}</td>
 							</tr>
 						</tfoot>
 					</table>

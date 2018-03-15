@@ -6,6 +6,7 @@ import {DescriptionPage} from './DescriptionPage';
 import { mount, configure, shallow } from 'enzyme';
 import initialState from '../../reducers/initialState';
 import CenterPage from '../common/CenterPage';
+import DescriptionStyle from './DescriptionStyle';
 
 
 function setup(saving) {
@@ -47,7 +48,7 @@ describe('Test render of DescriptionPage', () => {
 
 		let textarea = div.props.children[0];
 		expect(textarea.type).toBe('textarea');
-		expect(textarea.props.className).toBe('description_box');
+		expect(textarea.props.style).toEqual(DescriptionStyle.description_box);
 		expect(textarea.props.placeholder).toBe('Add a description of the type of computer you want to build');
 		expect(textarea.props.value).toBe("");
 

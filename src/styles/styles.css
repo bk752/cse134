@@ -49,23 +49,6 @@ header {
 	font-weight: bold;
 }
 
-.description_box{
-	height: 250px;
-	width: 100%;
-	margin: auto;
-	resize: none;
-}
-
-.recent_build{
-	border-style: solid;
-	padding: 10px;
-	margin: 10px;
-}
-
-.recent_build_img{
-	max-width: 100%;
-}
-
 .table{
 	max-width: 1000px;
 	padding-bottom: 100px;
@@ -270,23 +253,6 @@ a.button {
 	border-radius: 8px 8px 0 8px;
 }
 
-.price__table {
-	width: 100%;
-	border-collapse: collapse;
-}
-
-.price__table tfoot{
-	font-weight: 700;
-}
-
-.price__table thead th {
-	border-bottom: 1px solid black;
-}
-
-.price__table tfoot td {
-	border-top: 1px solid black;
-}
-
 .part-card {
 	margin: 5px;
 	padding: 5px;
@@ -353,10 +319,6 @@ form {
 	border-color: #0e1;
 	margin-left: 4px;
 	border-left-width: 16px;
-}
-
-tr.chatPartListEle>td {
-	padding-bottom: 5px;
 }
 
 .part-select__option--selected > .part-select__option,

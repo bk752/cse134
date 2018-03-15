@@ -20,6 +20,8 @@ import gpu1Image from '../../../images/gpu1.jpeg';
 import gpu2Image from '../../../images/gpu2.jpeg';
 import gpu3Image from '../../../images/gpu3.jpeg';
 import initialState from '../../reducers/initialState';
+
+import PartsStyle from './PartsStyle';
 let props = {
 	messages: initialState.chat.messages,
 	id: initialState.chat.id
@@ -45,7 +47,7 @@ describe('Test ChatPage React Components', () => {
 
 		let table = price.props.children;
 		expect(table.type).toBe('table');
-		expect(table.props.className).toBe('price__table');
+		expect(table.props.style).toEqual(PartsStyle.price__table);
 
 		let head = table.props.children[0];
 		expect(head.type).toBe('thead');

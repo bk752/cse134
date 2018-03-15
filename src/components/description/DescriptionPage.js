@@ -5,6 +5,7 @@ import CenterPage from '../common/CenterPage';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as descriptionActions from '../../actions/descriptionActions';
+import DescriptionStyle from './DescriptionStyle';
 
 export class DescriptionPage extends React.Component {
 	constructor (props, context) {
@@ -41,7 +42,7 @@ export class DescriptionPage extends React.Component {
 		return (
 			<CenterPage title={this.determineTitle()}>
 				<div id="description">
-					<textarea id="text" className="description_box" placeholder="Add a description of the type of computer you want to build" rows="3" cols="50" value={this.state.text} onChange={(event) => this.setState( {text: event.target.value} )}/>
+					<textarea id="text" style={DescriptionStyle.description_box} placeholder="Add a description of the type of computer you want to build" rows="3" cols="50" value={this.state.text} onChange={(event) => this.setState( {text: event.target.value} )}/>
 					<button id="button" type="button" onClick={this.buttonClick}>{this.state.editing ? "Save Description" : "Edit Description"}</button>
 				</div>
 			</CenterPage>
