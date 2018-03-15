@@ -2,7 +2,11 @@ import * as types from './actionTypes';
 import Part from '../objects/Part';
 
 export function addPart(name, disc, image, category) {
-	return {type: types.ADD_CATEGORY_PART, part: new Part(name, disc, image), category};
+	let price = parseFloat(disc);
+	if (isNaN(price)) {
+		price = 0.0;
+	}
+	return {type: types.ADD_CATEGORY_PART, part: new Part(name, price, image), category};
 }
 
 export function removePart(category) {

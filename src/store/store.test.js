@@ -12,12 +12,12 @@ describe('Store', function() {
 		const category = initialState.parts.list[0];
 
 		// act
-		const action = partsActions.addPart("part", "description", "img", category);
+		const action = partsActions.addPart("part", "40.00", "img", category);
 		store.dispatch(action);
 
 		// assert
 		const actual = store.getState().parts.list[0].parts[3];
-		const expected = new Part("part", "description", "img");
+		const expected = new Part("part", 40.00, "img");
 
 		expect(actual).toEqual(expected);
 	});
