@@ -71,7 +71,7 @@ describe('Test ChatPage React Components', () => {
 		expect(log.type).toBe('div');
 		expect(log.props.className).toBe('chat__log');
 		expect(log.props.id).toBe('chatLog');
-		//expect(log.props.children.length).toBe(5);
+		expect(log.props.children.length).toBe(5);
 
 		let input = chatMessaging.props.children[1];
 		expect(input.type).toBe('div');
