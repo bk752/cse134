@@ -5,6 +5,24 @@ import Step from '../objects/Step';
 export default function progressReducer(state = initialState.progress, action) {
 	let list;
 	switch (action.type) {
+	case types.LOAD_STEPS_SUCCESS:
+		return {
+			list : action.steps,
+			active: state.active
+		};
+	
+	case types.COMPLETE_STEP_SUCCESS:
+		return {
+			list : action.steps,
+			active: state.active + 1
+		};
+
+	case types.UNDO_STEP_SUCCESS:
+		return {
+			list: action.steps,
+			active: state.active - 1
+		};
+		
 	case types.COMPLETE_STEP:
 		list = [...state.list.map((step, index)=> {
 			if (index !== state.active) {

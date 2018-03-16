@@ -38,7 +38,7 @@ export class PickPage extends React.Component {
 							last={ind === parts.length - 1}
 							active={ind === active}
 							selectPart = {index => actions.selectPart(cat, index)}
-							completeCategory = {() => actions.completeCategory(cat)}
+							completeCategory = {() => actions.completeCategoryOnServer(cat)}
 						/>
 					))}
 				</div>

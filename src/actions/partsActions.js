@@ -5,6 +5,8 @@ import PartsApi from '../api/partsApi';
 export function loadPartsSuccess(list) {
 	return {type: types.LOAD_PARTS_SUCCESS, list};
 }
+
+
 export function addPart(name, disc, image, category) {
 	let price = parseFloat(disc);
 	if (isNaN(price)) {
@@ -34,3 +36,24 @@ export function loadParts() {
 		);
 	};
 }
+export function addPartToServer(name, disc, image, category) {
+	return function(dispatch) {
+		return PartsApi.addPart(name, disc, image, category).then(
+			function(list) {
+				dispatch(loadPartsSuccess(list));
+			}
+		);
+	};
+}
+
+export function removePartFromServer(category) {
+	return function(dispatch) {
+		return PartsApi.removePart(category).then(
+			function(list) {
+				dispatch(loadPartsSuccess(list));
+			}
+		);
+	};
+}
+
+

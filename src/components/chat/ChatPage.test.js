@@ -20,11 +20,12 @@ import gpu1Image from '../../../images/gpu1.jpeg';
 import gpu2Image from '../../../images/gpu2.jpeg';
 import gpu3Image from '../../../images/gpu3.jpeg';
 import initialState from '../../reducers/initialState';
-
+import {allMessages} from '../../api/chatApi';
+import {totalParts} from '../../api/partsApi';
 import PartsStyle from './PartsStyle';
 let props = {
-	messages: initialState.chat.messages,
-	id: initialState.chat.id
+	messages: allMessages,
+	allParts: totalParts
 };
 
 function setup(saving) {
@@ -60,7 +61,7 @@ describe('Test ChatPage React Components', () => {
 		let foot = table.props.children[2];
 		expect(foot.type).toBe('tfoot');
 		expect(foot.props.children.props.children[0].props.children).toBe('Total');
-		expect(foot.props.children.props.children[1].props.children).toBe('$687.68');
+		expect(foot.props.children.props.children[1].props.children).toBe('$0.00');
 
 		let chatMessaging = output.props.children[1];
 		expect(chatMessaging.type).toBe('div');

@@ -38,8 +38,8 @@ export class PartsPage extends React.Component {
 								first={ind === 0}
 								last={ind === parts.length - 1}
 								active={ind === active}
-								addPart={(name, disc, image) => actions.addPart(name, disc, image, cat)}
-								removePart={() => actions.removePart(cat)}
+								addPart={(name, disc, image) => actions.addPartToServer(name, disc, image, cat)}
+								removePart={() => actions.removePartFromServer(cat)}
 								nextCategory={() => actions.nextCategory(cat)}
 								prevCategory={() => actions.prevCategory(cat)}
 							/>

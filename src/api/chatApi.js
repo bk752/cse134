@@ -42,9 +42,9 @@ import mouse2Image from '../../images/mouse2.jpeg';
 let allMessages = [
 	new Message(0, "user", "Hello I would like some help choosing parts."),
 	new Message(1, "expert", "Hello. What can I help you with?"),
-	new Message(2, "user", "I am not sure what kind of motherboard I should get."),
-	new Message(3, "user", "Do you have any recommendations?"),
-	new Message(4, "expert", "How does this motherboard look?", new Part("ATX Motherboard", 109.99, mb1Image))
+	new Message(2, "user", "I am trying to build a really powerful computer for playing video games."),
+	new Message(3, "user", "I'm not really sure what kind of parts I should get right now."),
+	new Message(4, "expert", "Click on the Parts button in the bottom right to see what parts are available at this step.")
 ];
 
 let id = 5;
@@ -69,6 +69,9 @@ class ChatApi {
 	static addMessage(message) {
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
+				if (message.cat) {
+					allMessages = allMessages.filter(msg => !msg.cat);
+				}
 				message.id = id;
 				id = id + 1;
 				allMessages = [...allMessages, message];
@@ -87,5 +90,5 @@ class ChatApi {
 		});
 	}
 }
-
+export {allMessages};
 export default ChatApi;

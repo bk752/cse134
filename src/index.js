@@ -9,10 +9,14 @@ import routes from './routes';
 import './styles/styles.css'; //Webpack can import CSS files too!
 import { loadMessages } from './actions/chatActions';
 import {loadParts} from './actions/partsActions';
+import { loadSteps } from './actions/progressActions';
+import { loadDescription } from './actions/descriptionActions';
 
 const store = configureStore();
 store.dispatch(loadMessages());
 store.dispatch(loadParts());
+store.dispatch(loadSteps());
+store.dispatch(loadDescription());
 render(
 	<Provider store={store}>
 		<BrowserRouter>

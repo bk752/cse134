@@ -17,9 +17,12 @@ function ChatMessage (props) {
 				<div className="chat__message">
 					{partsList.map((part, ind) => (
 						<PartsMessage
+							id={id}
 							part={part}
 							addFunc={addFunc}
+							removeFunc={closeFunc}
 							key={part.name}
+							index={ind}
 						/>
 					))}
 					<button className="part-card__add" onClick={

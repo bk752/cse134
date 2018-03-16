@@ -7,11 +7,11 @@ import {ProgressPage} from './ProgressPage';
 import Category from '../../objects/Category';
 import Part from '../../objects/Part';
 import CenterPage from '../common/CenterPage';
-
+import {steps} from '../../api/progressApi';
 function setup(saving) {
 	let props = {
-		steps: initialState.progress.list,
-		active: initialState.progress.active
+		steps: steps,
+		active: 0
 	};
 	props.actions = {
 		completeStep: () => props.active = props.active + 1,

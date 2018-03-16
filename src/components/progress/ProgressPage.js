@@ -23,8 +23,8 @@ export class ProgressPage extends React.Component {
 							first={ind === 0}
 							last={ind === steps.length - 1}
 							activeOffset={ind - active}
-							completeStep={() => this.props.actions.completeStep(new Date())}
-							undoStep={this.props.actions.undoStep}
+							completeStep={() => this.props.actions.completeStepOnServer(active, new Date())}
+							undoStep={() => this.props.actions.undoStepOnServer(active)}
 						/>
 					))}
 				</div>
@@ -36,7 +36,7 @@ export class ProgressPage extends React.Component {
 ProgressPage.propTypes = {
 	steps: PropTypes.array,
 	active: PropTypes.number,
-	actions: PropTypes.objects
+	actions: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {

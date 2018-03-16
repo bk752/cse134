@@ -74,11 +74,15 @@ let totalParts = [
 		new Part("Samsung 500GB SSD", 229.99, storage2Image),
 		new Part("Samsung 1TB SSD", 429.99, storage3Image)
 	]),
-	new Category("Accessories").addPart([
+	new Category("Monitor").addPart([
 		new Part("HP 23.8-inch 1080p", 129.99, monitor1Image),
-		new Part("ASUS 24-inch 1080p VG245H Gaming Monitor", 199.99, monitor2Image),
+		new Part("ASUS 24-inch 1080p VG245H Gaming Monitor", 199.99, monitor2Image)
+	]),
+	new Category("Keyboard").addPart([
 		new Part("Amazon Basics Wired Keyboard", 12.99, keyboard1Image),
-		new Part("SteelSeries Apex Gaming Keyboard", 49.00, keyboard2Image),
+		new Part("SteelSeries Apex Gaming Keyboard", 49.00, keyboard2Image)
+	]),
+	new Category("Mouse").addPart([
 		new Part("Amazon Basics Wired Mouse", 6.99, mouse1Image),
 		new Part("Razer DeathAdder Gaming Mouse", 59.99, mouse2Image)
 	])
@@ -119,9 +123,47 @@ class PartsApi {
 					if (cat.name !== category.name) {
 						return cat;
 					} else {
-						return (new Category(category)).addPart(part);
+						return (new Category(cat)).addPart(part);
 					}
 				})];
+				resolve(Object.assign([], totalParts));
+			}, delay);
+		});
+	}
+
+	static removePart(category) {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				totalParts = [...totalParts.map(cat=> {
+					if (cat.name !== category.name) {
+						return cat;
+					} else {
+						let newCat = (new Category(cat));
+						newCat.removePart();
+						return newCat;
+					}
+				})];
+				resolve(Object.assign([], totalParts));
+			}, delay);
+		});
+	}
+
+	static completeCategory(category) {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				if (category.picked) {
+					totalParts = [...totalParts.map(cat=> {
+						if (cat.name !== category.name) {
+							return cat;
+						} else {
+							let newCat = (new Category(category));
+							newCat.completeSelect();
+							return newCat;
+						}
+					})];
+					resolve(Object.assign([], totalParts));
+				}
+				reject();
 			}, delay);
 		});
 	}

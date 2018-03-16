@@ -4,7 +4,6 @@ import rootReducer from '../reducers';
 import initialState from '../reducers/initialState';
 import * as partsActions from '../actions/partsActions';
 import Part from '../objects/Part';
-import { loadParts } from '../actions/partsActions';
 
 describe('Store', function() {
 	it('Should handle creating courses', function() {

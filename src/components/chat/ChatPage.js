@@ -6,6 +6,7 @@ import Message from '../../objects/Message';
 import Part from '../../objects/Part';
 import Category from '../../objects/Category';
 import * as chatActions from '../../actions/chatActions';
+import * as pickActions from '../../actions/pickActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import i3Image from '../../../images/i3.jpeg';
@@ -25,13 +26,6 @@ import PartsStyle from './PartsStyle';
 export class ChatPage extends React.Component {
 	constructor (props, context) {
 		super(props, context);
-		this.state = {
-			id: 5,
-			parts:[
-				new Part("NVIDIA GTX 1060", 489.89), 
-				new Part("i5 Processor", 197.79)
-			],
-		};
 		this.keyPress = this.keyPress.bind(this);
 		this.sendOnClick = this.sendOnClick.bind(this);
 		this.partsOnClick = this.partsOnClick.bind(this);
@@ -47,21 +41,18 @@ export class ChatPage extends React.Component {
 	}
 
 	calculateTotal() {
+		let allParts = this.props.allParts;
 		let sum = 0;
-		for (let i = 0; i < this.state.parts.length; i++) {
-			sum += this.state.parts[i].desc;
+		for (let j = 0; j < this.props.currentCat; j++) {
+			let cat = allParts[j];
+			let part = cat.picked;
+			sum += part.desc;
 		}
 		return sum.toFixed(2);
 	}
 
 	addMessage(message) {
 		this.props.actions.addMessage(message);
-		/*this.setState(previousState => {
-			return {
-				messages: [...previousState.messages, message],
-				id: previousState.id + 1
-			};
-		});*/
 	}
 
 	sendMessage() {
@@ -70,7 +61,7 @@ export class ChatPage extends React.Component {
 		if (text === "") {
 			return;
 		}
-		let msg = new Message(this.props.id, "user", text);
+		let msg = new Message(0, "user", text);
 		this.addMessage(msg);
 		messageBox.value = "";
 	}
@@ -83,45 +74,25 @@ export class ChatPage extends React.Component {
 		this.displayParts();
 	}
 
-	addPartToList(part) {
-		this.setState(previousState => {
-			return {
-				parts: [...previousState.parts, part]
-			};
-		});
+	addPartToList(ind) {
+		let category = new Category(this.props.allParts[this.props.currentCat]);
+		category.select(ind);
+		this.props.actions.completeCategoryOnServer(category);
 	}
 
 	displayParts() {
-		let id = this.props.id;
 		let allParts = this.props.allParts;
-		let chatLog = document.getElementById("chatLog");
-		let messageBox = document.getElementById("chatTextbox");
-		let text = messageBox.value;
-		if (text === "") {
-			return;
+		let cat = allParts[this.props.currentCat];
+		if (cat) {
+			let msg = new Message(0, "user", null, null, cat);
+			this.addMessage(msg);
 		}
-		/*for (let j = 0; j < allParts.length; j++) {
-			let cat = allParts[j];
-			if (cat.name.toLowerCase() === text.toLowerCase()) {
-				let msg = new Message(this.props.id, "user", null, null, cat);
-				this.addMessage(msg);
-				messageBox.value = "";
-				break;
-			}
-		}*/
-		PartsApi.getCategory(text).then(
-			function(category) {
-				let msg = new Message(id, "user", null, null, category);
-				this.addMessage(msg);
-				messageBox.value = "";
-			}.bind(this),
-			function(errorMsg) {
-				let msg = new Message(id, "expert", errorMsg);
-				this.addMessage(msg);
-				messageBox.value = "";
-			}.bind(this)
-		);
+		else {
+			let msg = new Message(0, "expert", "We are done! No more parts to show.");
+			this.addMessage(msg);
+		}
 	}
+
 	keyPress(e) {
 		let key = e.keyCode;
 	
@@ -129,7 +100,15 @@ export class ChatPage extends React.Component {
 		if (key === 13) {
 			if (e.shiftKey) {
 				//partsOnClick();
-				this.displayParts();
+				let messageBox = document.getElementById("chatTextbox");
+				let text = messageBox.value;
+				if (text.toLowerCase() === "parts") {
+					this.displayParts();
+				} else {
+					let msg = new Message(0, "expert", "To display parts, press the Parts button in the bottom right, or type in parts in the chat box and press shift - enter.");
+					this.addMessage(msg);
+				}
+				messageBox.value = "";
 			}
 			else {
 				this.sendMessage();
@@ -143,13 +122,17 @@ export class ChatPage extends React.Component {
 		this.props.actions.removeMessage(id);
 	}
 
-	PartsList(part, ind) {
-		return(
-			<tr key={ind}>
-				<td style={PartsStyle.chatPartListEle}>{part.name}</td>
-				<td style={PartsStyle.chatPartListEle}>{"$"+part.desc.toFixed(2)}</td>
-			</tr>
-		);
+	PartsList(cat, ind) {
+		if (cat.complete) {
+			let part = cat.picked;
+			return(
+				<tr key={ind}>
+					<td style={PartsStyle.chatPartListEle}>{part.name}</td>
+					<td style={PartsStyle.chatPartListEle}>{"$"+part.desc.toFixed(2)}</td>
+				</tr>
+			);
+		}
+		return;
 	}
 
 	render() {
@@ -165,8 +148,8 @@ export class ChatPage extends React.Component {
 							</tr>
 						</thead>
 						<tbody>
-							{this.state.parts.map((part, ind)=> (
-								this.PartsList(part, ind)
+							{this.props.allParts.map((cat, ind)=> (
+								this.PartsList(cat, ind)
 							))}
 						</tbody>
 						<tfoot style={PartsStyle.price_tabletfoot}>
@@ -208,7 +191,16 @@ export class ChatPage extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
+	let list = state.parts.list;
+	let currentCat = 0;
+	for (; currentCat < list.length; currentCat++) {
+		let cat = list[currentCat];
+		if (!cat.complete) {
+			break;
+		}
+	}
 	return {
+		currentCat: currentCat,
 		messages: state.chat.messages,
 		id: state.chat.id,
 		allParts: state.parts.list
@@ -217,13 +209,13 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators(chatActions, dispatch)
+		actions: bindActionCreators(Object.assign({}, chatActions, pickActions), dispatch)
 	};
 }
 
 ChatPage.propTypes = {
+	currentCat: PropTypes.number,
 	messages: PropTypes.array,
-	id: PropTypes.number,
 	actions: PropTypes.object,
 	allParts: PropTypes.array
 };

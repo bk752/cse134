@@ -12,7 +12,16 @@ export default function partsReducer(state = initialState.parts, action) {
 			adding: state.adding
 		};
 
-
+	case types.COMPLETE_CATEGORY_SUCCESS:
+		return {
+			list: action.list,
+			active: state.active + 1,
+			adding: state.adding
+		};
+		
+	case types.COMPLETE_CATEGORY_FAILED:
+		return state;
+		
 	case types.SELECT_CATEGORY_PART:
 		list = [...state.list.map(cat=> {
 			if (cat.name !== action.category.name) {

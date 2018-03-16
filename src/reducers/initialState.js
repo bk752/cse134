@@ -39,7 +39,7 @@ import mouse1Image from '../../images/mouse1.jpeg';
 import mouse2Image from '../../images/mouse2.jpeg';
 
 //import CourseApi from '../api/partsApi';
-import {totalParts} from '../api/partsApi';
+
 export default {
 	parts: {
 		list: [],
@@ -48,22 +48,14 @@ export default {
 	},
 	progress: {
 		active: 0,
-		list: [
-			new Step("Description"),
-			new Step("Pick Parts"),
-			new Step("Order Parts"),
-			new Step("Expert Builds Computer"),
-			new Step("Shipping Computer"),
-			new Step("Set up Computer"),
-		]
+		list: []
 	},
 	description: {
 		text: "",
 		filledOut: false
 	},
 	chat: {
-		messages:[],
-		id: 0
+		messages:[]
 	},
 	account: {
 		loggedIn: false
