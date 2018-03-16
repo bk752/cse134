@@ -85,7 +85,7 @@ let totalParts = [
 ];
 
 class PartsApi {
-	static getAllCourses() {
+	static getAllParts() {
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
 				resolve(Object.assign([], totalParts));
