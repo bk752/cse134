@@ -2,7 +2,6 @@ import expect from 'expect';
 import React from 'react';
 import {mount} from 'enzyme';
 import ShallowRenderer from 'react-test-renderer/shallow';
-import initialState from '../../reducers/initialState';
 import {ProgressPage} from './ProgressPage';
 import Category from '../../objects/Category';
 import Part from '../../objects/Part';
@@ -40,12 +39,12 @@ describe('ProgressPage via React Test Utils', () => {
 
 	it('test step completion', () => {
 		let props = {
-			steps: initialState.progress.list,
-			active: initialState.progress.active
+			steps: steps,
+			active: 0
 		};
 		props.actions = {
-			completeStep: () => props.active = props.active + 1,
-			undoStep: () => props.active = props.active - 1,
+			completeStepOnServer: () => props.active = props.active + 1,
+			undoStepOnServer: () => props.active = props.active - 1,
 		};
 
 		const wrapper = mount(<ProgressPage {...props}/>);
@@ -57,12 +56,12 @@ describe('ProgressPage via React Test Utils', () => {
 
 	it('test step undo', () => {
 		let props = {
-			steps: initialState.progress.list,
+			steps: steps,
 			active: 1,
 		};
 		props.actions = {
-			completeStep: () => props.active = props.active + 1,
-			undoStep: () => props.active = props.active - 1,
+			completeStepOnServer: () => props.active = props.active + 1,
+			undoStepOnServer: () => props.active = props.active - 1,
 		};
 
 		const wrapper = mount(<ProgressPage {...props}/>);
