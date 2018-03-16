@@ -106,6 +106,25 @@ class PartsApi {
 			}, delay);
 		});
 	}
+
+	static addPart(name, disc, image, category) {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				let price = parseFloat(disc);
+				if (isNaN(price)) {
+					price = 0.0;
+				}
+				let part = new Part(name, price, image, category);
+				totalParts = [...totalParts.map(cat=> {
+					if (cat.name !== category.name) {
+						return cat;
+					} else {
+						return (new Category(category)).addPart(part);
+					}
+				})];
+			}, delay);
+		});
+	}
 }
 export {totalParts};
 export default PartsApi;

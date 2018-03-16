@@ -1,7 +1,7 @@
-import Step from '../objects/Step';
+import delay from './delay';
+import Category from '../objects/Category';
 import Part from '../objects/Part';
 import Message from '../objects/Message';
-import Category from '../objects/Category';
 import i3Image from '../../images/i3.jpeg';
 import i5Image from '../../images/i5.jpeg';
 import i7Image from '../../images/i7.jpeg';
@@ -38,34 +38,54 @@ import keyboard2Image from '../../images/keyboard2.jpeg';
 import mouse1Image from '../../images/mouse1.jpeg';
 import mouse2Image from '../../images/mouse2.jpeg';
 
-//import CourseApi from '../api/partsApi';
-import {totalParts} from '../api/partsApi';
-export default {
-	parts: {
-		list: [],
-		active: 0,
-		adding: 0
-	},
-	progress: {
-		active: 0,
-		list: [
-			new Step("Description"),
-			new Step("Pick Parts"),
-			new Step("Order Parts"),
-			new Step("Expert Builds Computer"),
-			new Step("Shipping Computer"),
-			new Step("Set up Computer"),
-		]
-	},
-	description: {
-		text: "",
-		filledOut: false
-	},
-	chat: {
-		messages:[],
-		id: 0
-	},
-	account: {
-		loggedIn: false
+
+let allMessages = [
+	new Message(0, "user", "Hello I would like some help choosing parts."),
+	new Message(1, "expert", "Hello. What can I help you with?"),
+	new Message(2, "user", "I am not sure what kind of motherboard I should get."),
+	new Message(3, "user", "Do you have any recommendations?"),
+	new Message(4, "expert", "How does this motherboard look?", new Part("ATX Motherboard", 109.99, mb1Image))
+];
+
+let id = 5;
+
+class ChatApi {
+	static getAllMessages() {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve(Object.assign([], allMessages));
+			}, delay);
+		});
 	}
-};
+
+	static getCurrentID() {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve(id);
+			}, delay);
+		});
+	}
+   
+	static addMessage(message) {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				message.id = id;
+				id = id + 1;
+				allMessages = [...allMessages, message];
+				resolve(Object.assign([], allMessages));
+				
+			}, delay);
+		});
+	}
+
+	static removeMessageByID(id) {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				allMessages = allMessages.filter(msg => msg.id !== id);
+				resolve(Object.assign([], allMessages));
+			}, delay);
+		});
+	}
+}
+
+export default ChatApi;

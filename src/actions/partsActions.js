@@ -1,6 +1,10 @@
 import * as types from './actionTypes';
 import Part from '../objects/Part';
+import PartsApi from '../api/partsApi';
 
+export function loadPartsSuccess(list) {
+	return {type: types.LOAD_PARTS_SUCCESS, list};
+}
 export function addPart(name, disc, image, category) {
 	let price = parseFloat(disc);
 	if (isNaN(price)) {
@@ -19,4 +23,14 @@ export function nextCategory(category) {
 
 export function prevCategory(category) {
 	return {type: types.EDIT_PREV_CATEGORY, category};
+}
+
+export function loadParts() {
+	return function(dispatch) {
+		return PartsApi.getAllParts().then(
+			function(list) {
+				dispatch(loadPartsSuccess(list));
+			}
+		);
+	};
 }

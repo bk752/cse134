@@ -5,6 +5,14 @@ import Category from '../objects/Category';
 export default function partsReducer(state = initialState.parts, action) {
 	let list;
 	switch (action.type) {
+	case types.LOAD_PARTS_SUCCESS:
+		return {
+			list: action.list,
+			active: state.active,
+			adding: state.adding
+		};
+
+
 	case types.SELECT_CATEGORY_PART:
 		list = [...state.list.map(cat=> {
 			if (cat.name !== action.category.name) {
